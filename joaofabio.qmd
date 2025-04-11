@@ -12,11 +12,15 @@ source("rdocs/joaofabio.R")
 
 ## Relação entre SELIC e juros reais
 
-Essa análise tem como objetivo investigar a relação linear entre a taxa Selic e os juros reais, no período de 2002 a 2022.
+Esta análise tem como objetivo investigar a relação linear entre a taxa Selic e os juros reais no período de 2002 a 2022.
 
-Para a realização da análise, foram consideradas duas variáveis quantitativas contínuas: selic_meta: corresponde à variável Taxa Selic, a taxa básica de juros; juros_reais: representa a taxa de juros real, ou seja, a taxa nominal descontada da inflação.
+Para a realização da análise, foram consideradas duas variáveis quantitativas contínuas:
 
-Para a análise estatística descritiva, calculou-se medidas de tendência central, dispersão e posição de ambas variáveis.
+selic_meta: corresponde à taxa Selic, a taxa básica de juros da economia;
+
+juros_reais: representa a taxa de juros real, ou seja, a taxa nominal descontada da inflação.
+
+Na análise estatística descritiva, foram calculadas medidas de tendência central, dispersão e posição para ambas as variáveis.
 
 ::: {#quad-quadro_selic layout-align="center" quad-pos="H"}
 ```{=latex}
@@ -64,9 +68,9 @@ Medidas de resumo da taxa selic
 Medidas de resumo dos juros reais
 :::
 
-A partir do [**Quadro** @quad-quadro_selic] e [**Quadro** @quad-quadro_juros], percebe-se a proximidade entre a média e a mediana das duas variáveis, apesar de ambas apresentarem valores extremos que revelam uma certa dispersão dos dados. No caso da taxa Selic, observa-se um valor máximo consideravelmente alto quando comparado com a média, e para os Juros Reais, nota-se, a partir do valor mínimo, a ocorrência de juros reais negativos.
+A partir do [**Quadro** @quad-quadro_selic] e [**Quadro** @quad-quadro_juros], percebe-se a proximidade entre a média e a mediana das duas variáveis, apesar de ambas apresentarem valores extremos que indicam certa dispersão nos dados. No caso da taxa Selic, observa-se um valor máximo consideravelmente alto em comparação à média; já para os juros reais, nota-se, a partir do valor mínimo, a ocorrência de juros reais negativos.
 
-Com o intuito de observar a relação linear entre a taxa Selic e os juros reais, construi-se um gráfico de dipersão, que é uma representação gráfica utilizada para ilustrar o comportamento conjunto de duas variáveis quantitativas, neste caso, selic_meta e juros_reais.
+Com o intuito de observar a relação linear entre a taxa Selic e os juros reais, construi-se um gráfico de dipersão - uma representação gráfica utilizada para ilustrar o comportamento conjunto de duas variáveis quantitativas, neste caso, selic_meta e juros_reais.
 
 ```{r}
 #| label: fig-selic-vs-juros
@@ -78,9 +82,9 @@ grafic1
 
 Cada ponto na $\ref{fig-selic-vs-juros}$, representa um par ordenado, composto pela taxa Selic e os juros reais em determinado mês, permitindo visualizar padrões, correlações e possíveis tendências.
 
-Como pode se observar na $\ref{fig-selic-vs-juros}$, o gráfico de dispersão apresenta uma relação positiva. Percebe-se que à medida em que a taxa selic aumenta, os juros reais também tendem a aumentar. Entretanto, nota-se que a partir do momento em que a taxa Selic está em torno de 20%, os juros reais não continuam subindo proporcionalmente, o que poderia estar relacionado com uma possível alta na inflação.
+Como pode ser observado na $\ref{fig-selic-vs-juros}$, o gráfico de dispersão apresenta uma relação positiva entre as variáveis. Percebe-se que, à medida que a taxa selic aumenta, os juros reais também tendem a aumentar. Entretanto, nota-se que, a partir do momento em que a taxa Selic atinge aproximadamente 20%, os juros reais deixam de crescer proporcionalmente, o que pode estar relacionado com um aumento significativo da inflação.
 
-Para se ter o conhecimento da natureza e força dessa relação, foi realizada uma regressão linear simples. Uma regressão linear é uma técnica estatística usada para encontrar a relação entre variáveis.
+Para compreender a natureza e força dessa relação, foi realizada uma regressão linear simples. Uma regressão linear é uma técnica estatística usada para estimar a relação entre variáveis.
 
 ```{r}
 #| label: fig-selic-vs-juros-regressao-lin
@@ -90,10 +94,10 @@ grafic2
 
 ```
 
-A análise de regressão linear mostra uma relação linear positiva entre a taxa Selic e os juros reais. O coeficiente da taxa Selic calculado de 0,579 revela que os juros simples aumentam aproximadamente 0,58 pontos a cada 1 ponto de aumento percentual na taxa Selic.
+A análise de regressão linear mostra uma relação linear positiva entre a taxa Selic e os juros reais. O coeficiente da taxa Selic calculado em 0,579 revela que os juros simples aumentam aproximadamente 0,58 pontos percentuais a cada 1 ponto percentual na taxa Selic.
 
-Ao estimar o coeficiente de Pearson, medida que verifica o grau de relação linear entre duas variáveis quantitativas e indicado pela letra r, o valor encontrado foi de aproximadamente 0,79. Isso indica uma correlação linear positiva forte, ou seja, existe uma relação positiva entre as variáveis selic_meta e juros_reais, como se fossem diretamente proporcionais. Entretanto, o coeficiente de Pearson indica uma tendência e não é uma garantia de proporcionalidade, já que ao observar a $\ref{fig-selic-vs-juros-regressao-lin}$ percebe-se que existem pontos em que a taxa está por torno de 20%, mas os juros reais são menores do que em pontos quando a taxa está por torno de 10%.
+Ao estimar o coeficiente de correlação de Pearson - medida que verifica o grau de relação linear entre duas variáveis quantitativas, representada pela letra r -, o valor encontrado foi de aproximadamente 0,79. Isso indica uma correlação linear positiva forte, ou seja, existe uma relação positiva entre as variáveis selic_meta e juros_reais, como se fossem diretamente proporcionais. Entretanto, o coeficiente de Pearson indica uma tendência e não é uma garantia de proporcionalidade. Isso é evidenciado na $\ref{fig-selic-vs-juros-regressao-lin}$, onde se observa que, em determinados pontos em que a taxa Selic está em torno de 20%, os juros reais são menores do que em outros pontos em que a Selic está por volta de 10%.
 
 O coeficiente de determinação (R²) também foi estimado, já que explica a variância global dos dados. O valor encontrado de aproximadamente 0,62, sugere que 62% da variação dos juros reais pode ser explicada pela taxa Selic.
 
-A partir da análise realizada, consegue-se inferir que a taxa Selic tem uma forte influência sobre o comportamento dos juros reais, entretanto, como essa última taxa é a taxa nominal descontada da inflação, fica evidente que a taxa Selic por si só não pode determinar totalmente os juros reais.
+A partir da análise realizada, consegue-se inferir que a taxa Selic tem uma forte influência sobre o comportamento dos juros reais. Entretanto, como os juros reais são obtidos pela taxa nominal descontada da inflação, fica evidente que a Selic, isoladamente, não é capaz de explicar completamente a variação dos juros reais.
