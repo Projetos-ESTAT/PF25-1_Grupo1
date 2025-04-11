@@ -6,7 +6,7 @@
 %
 \documentclass[
   portuguese,
-]{estat}
+]{estat/estat}
 \usepackage{xcolor}
 \usepackage[left=3cm,right=2cm,top=3cm,bottom=2cm]{geometry}
 \usepackage{amsmath,amssymb}
@@ -233,6 +233,59 @@
 \tableofcontents
 }
 
+\begin{verbatim}
+\begin{quadro}[H]
+    \setlength{ \tabcolsep}{9pt}
+    \renewcommand{  \arraystretch}{1.20}
+    \caption{Medidas resumo da(o) [nome da variável]}
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabular} { | l |
+            S[table-format = 1.2]
+            |}
+    \hline
+        \textbf{Estatística} & \textbf{Valor} \\
+        \hline
+        Média & 11,79 \\
+        Desvio Padrão & 5,12 \\
+        Variância & 26,23 \\
+        Mínimo & 2 \\
+        1º Quartil & 8,44 \\
+        Mediana & 11,25 \\
+        3º Quartil & 14,25 \\
+        Máximo & 26,5 \\
+    \hline
+    \end{tabular}
+    \label{quad:quadro_resumo1}
+    \end{adjustbox}
+\end{quadro}
+\begin{quadro}[H]
+    \setlength{ \tabcolsep}{9pt}
+    \renewcommand{  \arraystretch}{1.20}
+    \caption{Medidas resumo da(o) [nome da variável]}
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabular} { | l |
+            S[table-format = 1.2]
+            |}
+    \hline
+        \textbf{Estatística} & \textbf{Valor} \\
+        \hline
+        Média & 5,01 \\
+        Desvio Padrão & 3,76 \\
+        Variância & 14,12 \\
+        Mínimo & -4,44 \\
+        1º Quartil & 2,92 \\
+        Mediana & 4,5 \\
+        3º Quartil & 7,5 \\
+        Máximo & 12,95 \\
+    \hline
+    \end{tabular}
+    \label{quad:quadro_resumo1}
+    \end{adjustbox}
+\end{quadro}
+\end{verbatim}
+
 \section{Análises}\label{anuxe1lises}
 
 \subsection{Relação entre SELIC e juros
@@ -316,6 +369,19 @@ reais, construi-se um gráfico de dipersão, que é uma representação
 gráfica utilizada para ilustrar o comportamento conjunto de duas
 variáveis quantitativas, neste caso, selic\_meta e juros\_reais.
 
+\begin{figure}[H]
+
+\caption{\label{fig-selic-vs-juros}Gráfico de dispersão da taxa selic
+pelos juros reais (2002-2012)}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{joaofabio_files/figure-pdf/fig-selic-vs-juros-1.pdf}}
+
+}
+
+\end{figure}%
+
 Cada ponto na \(\ref{fig-selic-vs-juros}\), representa um par ordenado,
 composto pela taxa Selic e os juros reais em determinado mês, permitindo
 visualizar padrões, correlações e possíveis tendências.
@@ -330,6 +396,19 @@ que poderia estar relacionado com uma possível alta na inflação.
 Para se ter o conhecimento da natureza e força dessa relação, foi
 realizada uma regressão linear simples. Uma regressão linear é uma
 técnica estatística usada para encontrar a relação entre variáveis.
+
+\begin{figure}[H]
+
+\caption{\label{fig-selic-vs-juros-regressao-lin}Gráfico de dispersão da
+taxa selic pelos juros reais (2002-2012)}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{joaofabio_files/figure-pdf/fig-selic-vs-juros-regressao-lin-1.pdf}}
+
+}
+
+\end{figure}%
 
 A análise de regressão linear mostra uma relação linear positiva entre a
 taxa Selic e os juros reais. O coeficiente da taxa Selic calculado de

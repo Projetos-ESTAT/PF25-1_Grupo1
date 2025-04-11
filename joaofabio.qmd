@@ -5,7 +5,7 @@ output-file: "Joao Fabio"
 
 
 ```{r setup}
-#source("rdocs/joaofabio.R")
+source("rdocs/joaofabio.R")
 ```
 
 # Análises
@@ -72,7 +72,7 @@ Com o intuito de observar a relação linear entre a taxa Selic e os juros reais
 #| label: fig-selic-vs-juros
 #| fig-cap: "Gráfico de dispersão da taxa selic pelos juros reais (2002-2012)"
 
-#grafic1
+grafic1
 
 ```
 
@@ -86,7 +86,7 @@ Para se ter o conhecimento da natureza e força dessa relação, foi realizada u
 #| label: fig-selic-vs-juros-regressao-lin
 #| fig-cap: "Gráfico de dispersão da taxa selic pelos juros reais (2002-2012)"
 
-#grafic2
+grafic2
 
 ```
 
