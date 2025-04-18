@@ -3,7 +3,6 @@
 output-file: "Joao Fabio"
 ---
 
-
 ```{r setup}
 source("rdocs/joaofabio.R")
 ```
@@ -12,65 +11,55 @@ source("rdocs/joaofabio.R")
 
 ## Relação entre SELIC e juros reais
 
-Esta análise tem como objetivo investigar a relação linear entre a taxa Selic e os juros reais no período de 2002 a 2022.
+Esta análise tem como objetivo investigar a relação linear entre a taxa Selic e os juros reais no período de 2002 a 2022. Na análise estatística descritiva, foram calculadas medidas de tendência central, dispersão e posição para as variáveis selic_meta - que corresponde à taxa Selic - e juros_reais - que representa a taxa de juros real. Além disso, foram construídos grafícos para a visualização da relação entre as variáveis.
 
-Para a realização da análise, foram consideradas duas variáveis quantitativas contínuas:
-
-selic_meta: corresponde à taxa Selic, a taxa básica de juros da economia;
-
-juros_reais: representa a taxa de juros real, ou seja, a taxa nominal descontada da inflação.
-
-Na análise estatística descritiva, foram calculadas medidas de tendência central, dispersão e posição para ambas as variáveis.
 
 ::: {#quad-quadro_selic layout-align="center" quad-pos="H"}
 ```{=latex}
-    \begin{tabular} { | l |
-            S[table-format = 1.2]
-            |}
-    \hline
-        \textbf{Estatística} & \textbf{Valor} \\
-        \hline
-        Média & 14,35 \\
-        Desvio Padrão & 4,75 \\
-        Variância & 22,55 \\
-        Mínimo & 7,25 \\
-        1º Quartil & 10,94 \\
-        Mediana & 13 \\
-        3º Quartil & 18 \\
-        Máximo & 26,5 \\
-    \hline
-    \end{tabular}
+\begin{tabular} { | l |
+			S[table-format = 1.2]
+			|}
+	\hline
+		\textbf{Estatística} & \textbf{Valor} \\
+		\hline
+		Média & 11,79 \\
+		Desvio Padrão & 5,12 \\
+		Variância & 26,23 \\
+		Mínimo & 2 \\
+		1º Quartil & 8,44 \\
+		Mediana & 11,25 \\
+		3º Quartil & 14,25 \\
+		Máximo & 26,5 \\
+	\hline
+	\end{tabular}
 ```
 
-Medidas de resumo da taxa selic
+Medidas de resumo da taxa Selic
 :::
 
 ::: {#quad-quadro_juros layout-align="center" quad-pos="H"}
 ```{=latex}
-    \begin{tabular} { | l |
-            S[table-format = 1.2]
-            |}
-    \hline
-        \textbf{Estatística} & \textbf{Valor} \\
-        \hline
-        Média & 5,01 \\
-        Desvio Padrão & 3,76 \\
-        Variância & 14,12 \\
-        Mínimo & -4,44 \\
-        1º Quartil & 2,92 \\
-        Mediana & 4,5 \\
-        3º Quartil & 7,5 \\
-        Máximo & 12,95 \\
-    \hline
-    \end{tabular}
+\begin{tabular} { | l |
+			S[table-format = 1.2]
+			|}
+	\hline
+		\textbf{Estatística} & \textbf{Valor} \\
+		\hline
+		Média & 5,01 \\
+		Desvio Padrão & 3,76 \\
+		Variância & 14,12 \\
+		Mínimo & -4,44 \\
+		1º Quartil & 2,92 \\
+		Mediana & 4,5 \\
+		3º Quartil & 7,5 \\
+		Máximo & 12,95 \\
+	\hline
+	\end{tabular}
+
 ```
 
-Medidas de resumo dos juros reais
+Medidas de resumo dos juros reais 
 :::
-
-A partir do [**Quadro** @quad-quadro_selic] e [**Quadro** @quad-quadro_juros], percebe-se a proximidade entre a média e a mediana das duas variáveis, apesar de ambas apresentarem valores extremos que indicam certa dispersão nos dados. No caso da taxa Selic, observa-se um valor máximo consideravelmente alto em comparação à média; já para os juros reais, nota-se, a partir do valor mínimo, a ocorrência de juros reais negativos.
-
-Com o intuito de observar a relação linear entre a taxa Selic e os juros reais, construi-se um gráfico de dipersão - uma representação gráfica utilizada para ilustrar o comportamento conjunto de duas variáveis quantitativas, neste caso, selic_meta e juros_reais.
 
 ```{r}
 #| label: fig-selic-vs-juros
@@ -80,12 +69,6 @@ grafic1
 
 ```
 
-Cada ponto na $\ref{fig-selic-vs-juros}$, representa um par ordenado, composto pela taxa Selic e os juros reais em determinado mês, permitindo visualizar padrões, correlações e possíveis tendências.
-
-Como pode ser observado na $\ref{fig-selic-vs-juros}$, o gráfico de dispersão apresenta uma relação positiva entre as variáveis. Percebe-se que, à medida que a taxa selic aumenta, os juros reais também tendem a aumentar. Entretanto, nota-se que, a partir do momento em que a taxa Selic atinge aproximadamente 20%, os juros reais deixam de crescer proporcionalmente, o que pode estar relacionado com um aumento significativo da inflação.
-
-Para compreender a natureza e força dessa relação, foi realizada uma regressão linear simples. Uma regressão linear é uma técnica estatística usada para estimar a relação entre variáveis.
-
 ```{r}
 #| label: fig-selic-vs-juros-regressao-lin
 #| fig-cap: "Gráfico de dispersão da taxa selic pelos juros reais (2002-2012)"
@@ -94,10 +77,143 @@ grafic2
 
 ```
 
-A análise de regressão linear mostra uma relação linear positiva entre a taxa Selic e os juros reais. O coeficiente da taxa Selic calculado em 0,579 revela que os juros simples aumentam aproximadamente 0,58 pontos percentuais a cada 1 ponto percentual na taxa Selic.
+A partir do [**Quadro** @quad-quadro_selic] e do [**Quadro** @quad-quadro_juros], percebe-se a proximidade entre a média e a mediana das duas variáveis, apesar de ambas apresentarem valores extremos que indicam certa dispersão nos dados. No caso da taxa Selic, observa-se um valor máximo consideravelmente alto em comparação à média; já para os juros reais, nota-se, a partir do valor mínimo, a ocorrência de juros reais negativos.
 
-Ao estimar o coeficiente de correlação de Pearson - medida que verifica o grau de relação linear entre duas variáveis quantitativas, representada pela letra r -, o valor encontrado foi de aproximadamente 0,79. Isso indica uma correlação linear positiva forte, ou seja, existe uma relação positiva entre as variáveis selic_meta e juros_reais, como se fossem diretamente proporcionais. Entretanto, o coeficiente de Pearson indica uma tendência e não é uma garantia de proporcionalidade. Isso é evidenciado na $\ref{fig-selic-vs-juros-regressao-lin}$, onde se observa que, em determinados pontos em que a taxa Selic está em torno de 20%, os juros reais são menores do que em outros pontos em que a Selic está por volta de 10%.
+Com o intuito de observar a relação linear entre a taxa Selic e os juros reais, construi-se um gráfico de dipersão - uma representação gráfica utilizada para ilustrar o comportamento conjunto de duas variáveis quantitativas, neste caso, selic_meta e juros_reais.
 
-O coeficiente de determinação (R²) também foi estimado, já que explica a variância global dos dados. O valor encontrado de aproximadamente 0,62, sugere que 62% da variação dos juros reais pode ser explicada pela taxa Selic.
+Cada ponto na $\ref{fig-selic-vs-juros}$, representa um par ordenado, composto pela taxa Selic e os juros reais em determinado mês, permitindo visualizar padrões, correlações e possíveis tendências.
+
+Como pode ser observado na $\ref{fig-selic-vs-juros}$, o gráfico de dispersão apresenta uma relação positiva entre as variáveis. Percebe-se que, à medida que a taxa selic aumenta, os juros reais também tendem a aumentar. Entretanto, nota-se que, a partir do momento em que a taxa Selic atinge aproximadamente 20%, os juros reais deixam de crescer proporcionalmente, o que pode estar relacionado com um aumento significativo da inflação.
+
+Para compreender a natureza e força dessa relação, foi realizada uma regressão linear simples. Uma regressão linear é uma técnica estatística usada para estimar a relação entre variáveis.
+
+A análise de regressão linear mostra uma relação linear positiva entre a taxa Selic e os juros reais. O coeficiente da taxa Selic *β* ≈ 0,579 revela que os juros simples aumentam aproximadamente 0,58 pontos percentuais a cada 1 ponto percentual na taxa Selic.
+
+Ao estimar o coeficiente de correlação de Pearson - medida que verifica o grau de relação linear entre duas variáveis quantitativas, representada pela letra *r* -, o valor encontrado foi de *r* ≈ 0,79. Isso indica uma correlação linear positiva forte, ou seja, existe uma relação positiva entre as variáveis selic_meta e juros_reais, como se fossem diretamente proporcionais. Entretanto, o coeficiente de Pearson indica uma tendência e não é uma garantia de proporcionalidade. Isso é evidenciado na $\ref{fig-selic-vs-juros-regressao-lin}$, onde se observa que, em determinados pontos em que a taxa Selic está em torno de 20%, os juros reais são menores do que em outros pontos em que a Selic está por volta de 10%.
+
+O coeficiente de determinação (*R²*) também foi estimado, já que explica a variância global dos dados. O valor encontrado de *R²* ≈ 0,62, sugere que 62% da variação dos juros reais pode ser explicada pela taxa Selic.
 
 A partir da análise realizada, consegue-se inferir que a taxa Selic tem uma forte influência sobre o comportamento dos juros reais. Entretanto, como os juros reais são obtidos pela taxa nominal descontada da inflação, fica evidente que a Selic, isoladamente, não é capaz de explicar completamente a variação dos juros reais.
+
+
+## Comparação de índices de inflação
+
+Esta análise tem como objetivo comparar o comportamento #mensal# do IPCA, IPCA-15 e IPC-FIPE, durante o período de 2002 a 2022, com o ituito de detectar divergências metodológicas ou contextuais. Medidas de tendência central, posição e dispersão, além de gráficos, estão presentes para investigar as variáveis ipca_variacao e ipca15_variacao, que apontam para a variação mensal do IPCA e IPCA15, e ipc_fipe_acumulado_ano - representando o IPC-FIPE acumulado no ano.
+
+::: {#quad-ipca layout-align="center" quad-pos="H"}
+```{=latex}
+\begin{tabular} { | l |
+			S[table-format = 0.2]
+			|}
+	\hline
+		\textbf{Estatística} & \textbf{Valor} \\
+		\hline
+		Média & 0,51 \\
+		Desvio Padrão & 0,41 \\
+		Variância & 0,16 \\
+		Mínimo & -0,68 \\
+		1º Quartil & 0,26 \\
+		Mediana & 0,46 \\
+		3º Quartil & 0,7 \\
+		Máximo & 3,02 \\
+	\hline
+	\end{tabular}
+
+```
+
+Medidas de resumo do IPCA
+:::
+
+::: {#quad-ipca15 layout-align="center" quad-pos="H"}
+```{=latex}
+\begin{tabular} { | l |
+			S[table-format = 0.2]
+			|}
+	\hline
+		\textbf{Estatística} & \textbf{Valor} \\
+		\hline
+		Média & 0,51 \\
+		Desvio Padrão & 0,41 \\
+		Variância & 0,17 \\
+		Mínimo & -0,73 \\
+		1º Quartil & 0,24 \\
+		Mediana & 0,46 \\
+		3º Quartil & 0,69 \\
+		Máximo & 3,05 \\
+	\hline
+	\end{tabular}
+
+```
+
+Medidas de resumo do IPCA15
+:::
+
+::: {#quad-ipc-fipe-acumulado layout-align="center" quad-pos="H"}
+```{=latex}
+\begin{tabular} { | l |
+			S[table-format = 1.2]
+			|}
+	\hline
+		\textbf{Estatística} & \textbf{Valor} \\
+		\hline
+		Média & 5,66 \\
+		Desvio Padrão & 2,27 \\
+		Variância & 5,17 \\
+		Mínimo & 2,26 \\
+		1º Quartil & 4,29 \\
+		Mediana & 5,51 \\
+		3º Quartil & 6,38 \\
+		Máximo & 10,56 \\
+	\hline
+	\end{tabular}
+
+```
+
+Medidas de resumo do IPC-FIPE acumulado de ano
+:::
+
+```{r}
+#| label: ipca-ipca15-linha
+#| fig-cap: "Variação Mensal - IPCA x IPCA-15 (2002–2022)"
+
+grafic3
+
+```
+
+```{r}
+#| label: ipc-fipe-linha
+#| fig-cap: "Inflação Acumulada no Ano – IPC-FIPE (2002–2022)"
+
+grafic4
+
+```
+
+```{r}
+#| label: ipca-ipca15-dispersao
+#| fig-cap: "Gráfico de dispersão do IPCA15 pelo IPCA (2002-2022)"
+
+grafic5
+
+```
+
+```{r}
+#| label: ipca-ipca15-regressao
+#| fig-cap: "Gráfico de dispersão do IPCA15 pelo IPCA (2002-2022)"
+
+grafic6
+
+```
+
+O IPCA é o Índice Nacional de Preços ao Consumidor Amplo, o principal indicador da inflação no Brasil. Já o IPCA-15 é uma prévia do IPCA, coletado do dia 15 do mês anterior até o dia 15 do mês de referência. A partir do [**Quadro** @quad-ipca] e [**Quadro** @quad-quadro_juros], nota-se que o IPCA e IPCA-15 apresentam os mesmos valores de média, mediana e desvio padrão, além de apresentarem valores muitos próximos para as outras medidas. Isso indica que a variação do IPCA, durante o período de 2002 à 2022, se manteu fiel ao valores previstos do IPCA-15. 
+
+Um gráfico de linhas, indicado pela $\ref{ipca-ipca15-linha}$, foi construído com o intuito de observar o comportmanto da variação mensal do IPCA E IPCA-15. Ao visualizá-lo, é perceptível que os dois índices seguem o mesmo padrão de alta e baixa da inflação, entretanto, nota-se pequenas divergências entre os valores que podem estar relacionadas com algumas diferenças no período de coleta, eventos sazonais ou choques econômicos, além de possíveis alterações pontuais nos preços que consolidaram mais tarde. 
+
+Alguns meses apresentam altas abruptas que podem estar relacionadas com choques nos preços de alimentos e combustíveis, assim como a ocorrência de crises econômicas, como pode ser observado no ano de 2020, quando a pandemia de COVID-19 se instaurou. Da mesma forma, meses que apresentam uma queda significativa podem indicar uma possível redução de demanda e cortes de impostos.
+
+Com o intuito de confirmar a relação entre os dois índices, foi realizado um gráfico de dispersão indicado pela $\ref{ipca-ipca15-dispersao}$ e a regressão linear indicada pela $\ref{ipca-ipca15-regressao}$. O gráfico de dispersão apresenta uma relação positiva entre os dois indicadores, confirmada pela regressão linear, que aponta 0,86 pontos de acréscimo na variação do IPCA a cada 1 ponto percentual do IPCA-15. Já o coeficiente de pearson, *r* ≈ 0,86 vai indicar que existe uma correlação linear positiva forte entre as variáveis, enquanto o coeficiente de determinação *R²* irá apontar que o IPCA-15 consegue prever 75% da variação do IPCA.
+
+Já o IPC-FIPE é o Índice de Preços ao Consumidor da Fundação Instituto de Pesquisas Econômicas, que acompanha a variação de preços de produtos e serviços no município de São Paulo. A partir do [**Quadro** @quad-ipc-fipe-acumulado], percebe-se que entre 2002 a 2022, a inflação anual teve um comportamento estável, com média aproximada de 5,66%. A distribuição dos dados é relativamente simétrica e a variação entre os anos se mostrou moderada ao apresentar um desvio padrão de 2,27 pontos percentuais. O valor máximo de 10,56% mostra um ano com uma inflação bem alta, provalvemente um ano de crise econômica ou choque inflacionário. Já o valor mínimo de 2,26% indica um ano com uma inflação bem baixa, possivelmente por medidas de política econômica. 
+
+Ao realizar um gráfico de linhas, indicado pela $\ref{ipc-fipe-linha}$, nota-se o comportamento de escada ou rampa, onde cada ano começa com um valor pequeno e sobe mês a mês até dezembro. Quanto mais íngrime a rampa, mais intensa foi a inflação naquele ano. Nota-se que os anos de 2002, 2015 e 2021 apresentam um inflação bem alta, enquanto os anos de 2006 e 2017 apresentam uma inflação mais estável.
+
+A partir da análise analisada, percebe-se que a variação do IPCA e do IPCA15 apresentaram comportamentos semelhantes ao longo dos anos, o que é esperado, visto que ambos os índices são calculados pelo IBGE com a mesma metodologia. Isso destaca a confiabilidade do IPCA15 em prever o IPCA. Já o IPC-FIPE, é um indicador que reflete exclusivamente o município de São Paulo e mostrou variações mais específicas e desvios em relação aos outros dois índices, o que é explicado pela sua metodologia distinta e foco regional.
