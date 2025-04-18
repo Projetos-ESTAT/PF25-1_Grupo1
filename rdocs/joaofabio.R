@@ -28,7 +28,7 @@ banco <- read.csv('inflacao.csv', sep = ',', dec = '.')
 # Análise 1
 
 dados1 <- subset(banco, ano >= 2002 & ano <= 2022)
-View(dados1)
+#View(dados1)
 
 ## Modelo
 modelo <- lm(juros_reais ~ selic_meta, dados1)
@@ -60,8 +60,8 @@ grafic2 <- ggplot(dados1, aes(x = selic_meta, y = juros_reais)) +
   theme_estat()
 
 ## Quadro
-print_quadro_resumo(dados1, selic_meta)
-print_quadro_resumo(dados1, juros_reais)
+#print_quadro_resumo(dados1, selic_meta)
+#print_quadro_resumo(dados1, juros_reais)
 
 # Análise 2
 
@@ -71,7 +71,7 @@ dados2 <- banco %>%
 dados_filtrados <- dados2 %>%
   filter(referencia >= as.Date("2002-01-01") & referencia <= as.Date("2022-12-01"))
 
-view(dados2)
+#view(dados2)
 
 dados_long <- dados_filtrados %>%
   select(referencia, ipca_variacao, ipca15_variacao) %>%
@@ -89,7 +89,7 @@ dados_dezembro <- dados2 %>%
   mutate(ano = year(referencia)) %>%
   select(ano, ipc_fipe_acumulado_ano)
 
-view(dados_dezembro)
+#view(dados_dezembro)
 
 
 ## Modelo
@@ -143,6 +143,6 @@ grafic6 <- ggplot(dados1, aes(x = ipca15_variacao, y = ipca_variacao)) +
 
 
 ## Quadro
-print_quadro_resumo(dados1, ipca_variacao)
-print_quadro_resumo(dados1, ipca15_variacao)
-print_quadro_resumo(dados_dezembro, ipc_fipe_acumulado_ano)
+#print_quadro_resumo(dados1, ipca_variacao)
+#print_quadro_resumo(dados1, ipca15_variacao)
+#print_quadro_resumo(dados_dezembro, ipc_fipe_acumulado_ano)
