@@ -7,11 +7,35 @@ output-file: "Joao Fabio"
 source("rdocs/joaofabio.R")
 ```
 
+# Introdução
+  
+  O seguinte projeto tem como objetivo investigar a relação entre o índice de inflação e diversas variáveis econômicas no Brasil, no período de 2002 a 2022. Sendo assim, é fundamental determinar os diversos fatores que influenciam a inflação e fornecer dados para embasar políticas econômicas mais assertivas. Isso foi realizado a partir de análises descritivas, de correlação, de regressão, univariadas e bivariadas, com o intuito de investigar a **influência da política monetária na inflação e na distribuição do salário mínimo**, a **comparação da inflação, distribuição da inflação** e **relação entre Selic e juros, além da regressão das taxas de juros e da inflação reais**.
+  
+  O banco de dados foi coletado pelo cliente e fornece números sobre diversos índices econômicos desde o mês de janeiro de 1980 até maio de 2023, o que foi suficiente para realizar as análises, uma vez que a investigação abrange o período de 2002 a 2022. As variáveis presentes no banco de dados ofereciam informações sobre a data de referência dos valores (mês e ano), além dos próprios valores dos índices de inflação — suas variações, acumulado durante o ano de referência e dos últimos doze meses —, do INCC (índice que mede o custo da construção civil), do salário mínimo e de taxas como a Selic e os juros reais.
+
+  A análise foi construída a partir da linguagem de programação R (versão 4.5.0), utilizando o RStudio (versão 2024.12.1), um software livre de ambiente de desenvolvimento integrado para R.
+  
+# Referencial Teórico
+
+  A análise de dados é um processo de investigar, processar, limpar e modelar dados a fim de extrair informações, observar padrões e realizar inferências a partir de técnicas estatísticas. Esta análise utilizou de tais técnicas a fim de atingir o objetivo do estudo. 
+  
+  Desse modo, a análise descritiva foi uma abordagem usada para resumir, organizar e apresentar de forma resumida os dados. Neste estudo, ela foi utilizada para calcular a média, mediana, variância, desvio padrão e quartis. Além disso, para a visualização gráfica, foram constrúidos gráficos de dispersão - 
+
+# Metodologia
+
+  Este relatório é constituído por métodos estatíticos que serão descritos a seguir de acordo com o que foi utilizado.
+  
+ • **Leitura dos dados**: Os dados foram importados e filtrados a partir de uma planilha em formato CSV.
+ • **Análise Descritiva**: Foram calculadas medidas de tendência central (média e mediana), dispersão (desvio padrão e variância) e posição (quartis).
+ • **Visualização Gráfica**: Construiu-se gráficos de dispersão e de linhas, além de boxplots.
+ • **Análise de Regressão Linear**: Aplicada para modelar a relação entre as variáveis.
+  
+
 # Análises
 
 ## Relação entre SELIC e juros reais
 
-Esta análise tem como objetivo investigar a relação linear entre a taxa Selic e os juros reais no período de 2002 a 2022. Na análise estatística descritiva, foram calculadas medidas de tendência central, dispersão e posição para as variáveis selic_meta - que corresponde à taxa Selic - e juros_reais - que representa a taxa de juros real. Além disso, foram construídos grafícos para a visualização da relação entre as variáveis.
+  Esta análise tem como objetivo investigar a relação linear entre a taxa Selic e os juros reais no período de 2002 a 2022. Na análise estatística descritiva, foram calculadas medidas de tendência central, dispersão e posição para as variáveis quantitavas contínuas *selic_meta* - que corresponde à taxa Selic - e *juros_reais* - que representa a taxa de juros real. Além disso, foram construídos grafícos para a visualização da relação entre as variáveis.
 
 ::: {#quad-quadro_selic layout-align="center" quad-pos="H"}
 ```{=latex}
@@ -75,27 +99,27 @@ grafic2
 
 ```
 
-A partir do [**Quadro** @quad-quadro_selic] e do [**Quadro** @quad-quadro_juros], percebe-se a proximidade entre a média e a mediana das duas variáveis, apesar de ambas apresentarem valores extremos que indicam certa dispersão nos dados. No caso da taxa Selic, observa-se um valor máximo consideravelmente alto em comparação à média; já para os juros reais, nota-se, a partir do valor mínimo, a ocorrência de juros reais negativos.
+  A partir do [**Quadro** @quad-quadro_selic] e do [**Quadro** @quad-quadro_juros], percebe-se a proximidade entre a média e a mediana das duas variáveis, apesar de ambas apresentarem valores extremos que indicam certa dispersão nos dados. No caso da taxa Selic, observa-se um valor máximo consideravelmente alto em comparação à média; já para os juros reais, nota-se, a partir do valor mínimo, a ocorrência de juros reais negativos.
 
-Com o intuito de observar a relação linear entre a taxa Selic e os juros reais, construi-se um gráfico de dipersão - uma representação gráfica utilizada para ilustrar o comportamento conjunto de duas variáveis quantitativas, neste caso, selic_meta e juros_reais.
+  Com o intuito de observar a relação linear entre a taxa Selic e os juros reais, construi-se um gráfico de dipersão - uma representação gráfica utilizada para ilustrar o comportamento conjunto de duas variáveis quantitativas, neste caso, selic_meta e juros_reais.
 
-Cada ponto na $\ref{fig-selic-vs-juros}$, representa um par ordenado, composto pela taxa Selic e os juros reais em determinado mês, permitindo visualizar padrões, correlações e possíveis tendências.
+  Cada ponto na $\ref{fig-selic-vs-juros}$, representa um par ordenado, composto pela taxa Selic e os juros reais em determinado mês, permitindo visualizar padrões, correlações e possíveis tendências.
 
-Como pode ser observado na $\ref{fig-selic-vs-juros}$, o gráfico de dispersão apresenta uma relação positiva entre as variáveis. Percebe-se que, à medida que a taxa selic aumenta, os juros reais também tendem a aumentar. Entretanto, nota-se que, a partir do momento em que a taxa Selic atinge aproximadamente 20%, os juros reais deixam de crescer proporcionalmente, o que pode estar relacionado com um aumento significativo da inflação.
+  Como pode ser observado na $\ref{fig-selic-vs-juros}$, o gráfico de dispersão apresenta uma relação positiva entre as variáveis. Percebe-se que, à medida que a taxa selic aumenta, os juros reais também tendem a aumentar. Entretanto, nota-se que, a partir do momento em que a taxa Selic atinge aproximadamente 20%, os juros reais deixam de crescer proporcionalmente, o que pode estar relacionado com um aumento significativo da inflação.
 
-Para compreender a natureza e força dessa relação, foi realizada uma regressão linear simples. Uma regressão linear é uma técnica estatística usada para estimar a relação entre variáveis.
+  Para compreender a natureza e força dessa relação, foi realizada uma regressão linear simples. Uma regressão linear é uma técnica estatística usada para estimar a relação entre variáveis.
 
-A análise de regressão linear mostra uma relação linear positiva entre a taxa Selic e os juros reais. O coeficiente da taxa Selic *β* ≈ 0,579 revela que os juros simples aumentam aproximadamente 0,58 pontos percentuais a cada 1 ponto percentual na taxa Selic.
+  A análise de regressão linear mostra uma relação linear positiva entre a taxa Selic e os juros reais. O coeficiente da taxa Selic *β* ≈ 0,579 revela que os juros simples aumentam aproximadamente 0,58 pontos percentuais a cada 1 ponto percentual na taxa Selic.
 
-Ao estimar o coeficiente de correlação de Pearson - medida que verifica o grau de relação linear entre duas variáveis quantitativas, representada pela letra *r* -, o valor encontrado foi de *r* ≈ 0,79. Isso indica uma correlação linear positiva forte, ou seja, existe uma relação positiva entre as variáveis selic_meta e juros_reais, como se fossem diretamente proporcionais. Entretanto, o coeficiente de Pearson indica uma tendência e não é uma garantia de proporcionalidade. Isso é evidenciado na $\ref{fig-selic-vs-juros-regressao-lin}$, onde se observa que, em determinados pontos em que a taxa Selic está em torno de 20%, os juros reais são menores do que em outros pontos em que a Selic está por volta de 10%.
+  Ao estimar o coeficiente de correlação de Pearson - medida que verifica o grau de relação linear entre duas variáveis quantitativas, representada pela letra *r* -, o valor encontrado foi de *r* ≈ 0,79. Isso indica uma correlação linear positiva forte, ou seja, existe uma relação positiva entre as variáveis selic_meta e juros_reais, como se fossem diretamente proporcionais. Entretanto, o coeficiente de Pearson indica uma tendência e não é uma garantia de proporcionalidade. Isso é evidenciado na $\ref{fig-selic-vs-juros-regressao-lin}$, onde se observa que, em determinados pontos em que a taxa Selic está em torno de 20%, os juros reais são menores do que em outros pontos em que a Selic está por volta de 10%.
 
-O coeficiente de determinação (*R²*) também foi estimado, já que explica a variância global dos dados. O valor encontrado de *R²* ≈ 0,62, sugere que 62% da variação dos juros reais pode ser explicada pela taxa Selic.
+  O coeficiente de determinação (*R²*) também foi estimado, já que explica a variância global dos dados. O valor encontrado de *R²* ≈ 0,62, sugere que 62% da variação dos juros reais pode ser explicada pela taxa Selic.
 
-A partir da análise realizada, consegue-se inferir que a taxa Selic tem uma forte influência sobre o comportamento dos juros reais. Entretanto, como os juros reais são obtidos pela taxa nominal descontada da inflação, fica evidente que a Selic, isoladamente, não é capaz de explicar completamente a variação dos juros reais.
+  A partir da análise realizada, consegue-se inferir que a taxa Selic tem uma forte influência sobre o comportamento dos juros reais. Entretanto, como os juros reais são obtidos pela taxa nominal descontada da inflação, fica evidente que a Selic, isoladamente, não é capaz de explicar completamente a variação dos juros reais.
 
 ## Comparação de índices de inflação
 
-Esta análise tem como objetivo comparar o comportamento do IPCA, IPCA-15 e IPC-FIPE, durante o período de 2002 a 2022, com o intuito de detectar divergências metodológicas ou contextuais. Medidas de tendência central, posição e dispersão, além de gráficos, estão presentes para investigar as variáveis ipca_variacao e ipca15_variacao, que apontam para a variação mensal do IPCA e IPCA15 e ipc_fipe_acumulado_ano - representando o IPC-FIPE acumulado no ano.
+  Esta análise tem como objetivo comparar o comportamento do IPCA, IPCA-15 e IPC-FIPE, durante o período de 2002 a 2022, com o intuito de detectar divergências metodológicas ou contextuais. Medidas de tendência central, posição e dispersão, além de gráficos, estão presentes para investigar as três variáveis quantitavas contínuas: *ipca_variacao* e *ipca15_variacao*, que apontam para a variação mensal do IPCA e IPCA15 e *ipc_fipe_acumulado_ano* - representando o IPC-FIPE acumulado no ano.
 
 ::: {#quad-ipca layout-align="center" quad-pos="H"}
 ```{=latex}
@@ -168,25 +192,9 @@ Medidas de resumo do IPC-FIPE acumulado de ano
 
 ```{r}
 #| label: fig-ipca-ipca15-linha
-#| fig-cap: "Variação Mensal - IPCA x IPCA-15 (2002–2022)"
+#| fig-cap: "Variação das médias anuais - IPCA x IPCA-15 (2002–2022)"
 
 grafic3
-
-```
-
-```{r}
-#| label: fig-ipca-ipca15-dispersao
-#| fig-cap: "Gráfico de dispersão do IPCA15 pelo IPCA (2002-2022)"
-
-grafic5
-
-```
-
-```{r}
-#| label: fig-ipca-ipca15-regressao
-#| fig-cap: "Gráfico de dispersão do IPCA15 pelo IPCA (2002-2022)"
-
-grafic6
 
 ```
 
@@ -198,16 +206,67 @@ grafic4
 
 ```
 
-O IPCA é o Índice Nacional de Preços ao Consumidor Amplo, o principal indicador da inflação no Brasil. Já o IPCA-15 é uma prévia do IPCA, coletado do dia 15 do mês anterior até o dia 15 do mês de referência. A partir do [**Quadro** @quad-ipca] e [**Quadro** @quad-quadro_juros], nota-se que o IPCA e IPCA-15 apresentaram os mesmos valores de média, mediana e desvio padrão, além de apresentarem valores muito próximos para as outras medidas. Isso indica que a variação do IPCA, durante o período de 2002 a 2022, se manteve fiel aos valores previstos do IPCA-15.
+  O IPCA é o Índice Nacional de Preços ao Consumidor Amplo, o principal indicador da inflação no Brasil. Já o IPCA-15 é uma prévia do IPCA, coletado do dia 15 do mês anterior até o dia 15 do mês de referência. A partir do [**Quadro** @quad-ipca] e [**Quadro** @quad-ipca15], nota-se que o IPCA e IPCA-15 apresentaram os mesmos valores de média, mediana e desvio padrão, além de apresentarem valores muito próximos para as outras medidas. Isso indica que a variação do IPCA, durante o período de 2002 a 2022, se manteve fiel aos valores previstos do IPCA-15.
 
-Um gráfico de linhas, indicado pela $\ref{fig-ipca-ipca15-linha}$, foi construído com o intuito de observar o comportamento da variação mensal do IPCA e IPCA-15. Ao visualizá-lo, é perceptível que os dois índices seguem o mesmo padrão de alta e baixa da inflação, entretanto, notam-se pequenas divergências entre os valores que podem estar relacionadas devido a algumas diferenças no período de coleta, eventos sazonais ou choques econômicos, além de possíveis alterações pontuais nos preços que consolidaram mais tarde.
+  Um gráfico de linhas, indicado pela $\ref{fig-ipca-ipca15-linha}$, foi construído a partir das médias anuais dos índices com o intuito de observar seus comportamentos. Ao visualizá-lo, é perceptível que tanto o IPCA quanto o IPCA-15 seguem o mesmo padrão de alta e baixa da inflação; entretanto, notam-se pequenas divergências entre os valores. Além do mais, alguns meses apresentaram altas e quedas abruptas.
 
-Alguns meses apresentam altas abruptas que podem estar relacionadas com choques nos preços de alimentos e combustíveis, assim como a ocorrência de crises econômicas, como pode ser observado no ano de 2020, quando a pandemia de COVID-19 se instaurou. Da mesma forma, meses que apresentam uma queda significativa podem indicar uma possível redução de demanda e cortes de impostos.
+  Já o IPC-FIPE é o Índice de Preços ao Consumidor da Fundação Instituto de Pesquisas Econômicas, que acompanha a variação de preços de produtos e serviços no município de São Paulo. A partir do [**Quadro** @quad-ipc-fipe-acumulado], percebe-se que entre 2002 e 2022, a inflação anual teve um comportamento estável, com média aproximada de 5,66%. A distribuição dos dados é relativamente simétrica e a variação entre os anos se mostrou moderada ao apresentar um desvio padrão de 2,27 pontos percentuais. O valor máximo de 10,56% mostra um ano com uma inflação bem alta, provavelmente um ano de crise econômica ou choque inflacionário. Já o valor mínimo de 2,26% indica um ano com uma inflação bem baixa, possivelmente por medidas de política econômica.
 
-Com o intuito de confirmar a relação entre os dois índices, foi realizado um gráfico de dispersão indicado pela $\ref{fig-ipca-ipca15-dispersao}$ e a regressão linear indicada pela $\ref{fig-ipca-ipca15-regressao}$. O gráfico de dispersão apresenta uma relação positiva entre os dois indicadores, confirmada pela regressão linear, que aponta um acréscimo de 0,86 ponto na variação do IPCA a cada 1 ponto percentual do IPCA-15. Já o coeficiente de Pearson, *r* ≈ 0,86 indica que existe uma correlação linear positiva forte entre as variáveis, enquanto o coeficiente de determinação *R²* irá apontar que o IPCA-15 consegue prever 75% da variação do IPCA.
+  Ao se realizar um gráfico de linhas, indicado pela $\ref{fig-ipc-fipe-linha}$, nota-se o comportamento do IPC-FIPE acumulado durante os anos. A partir da visualização do gráfico, percebe-se uma inflação elevada em alguns anos como por exemplo em 2002, 2015 e 2021. Por outro lado, anos como 2006 e 2017 apontam para uma inflação mais estável.
 
-Já o IPC-FIPE é o Índice de Preços ao Consumidor da Fundação Instituto de Pesquisas Econômicas, que acompanha a variação de preços de produtos e serviços no município de São Paulo. A partir do [**Quadro** @quad-ipc-fipe-acumulado], percebe-se que entre 2002 e 2022, a inflação anual teve um comportamento estável, com média aproximada de 5,66%. A distribuição dos dados é relativamente simétrica e a variação entre os anos se mostrou moderada ao apresentar um desvio padrão de 2,27 pontos percentuais. O valor máximo de 10,56% mostra um ano com uma inflação bem alta, provavelmente um ano de crise econômica ou choque inflacionário. Já o valor mínimo de 2,26% indica um ano com uma inflação bem baixa, possivelmente por medidas de política econômica.
+  A partir da análise, percebe-se que a variação do IPCA e do IPCA15 apresentaram comportamentos semelhantes ao longo dos anos, o que é esperado, visto que ambos os índices são calculados pelo IBGE com a mesma metodologia. Isso destaca a confiabilidade do IPCA15 em prever o IPCA. Já o IPC-FIPE é um indicador que reflete exclusivamente o município de São Paulo e mostrou variações mais específicas e desvios em relação aos outros dois índices, o que é explicado pela sua metodologia distinta e foco regional.
 
-Ao realizar um gráfico de linhas, indicado pela $\ref{fig-ipc-fipe-linha}$, nota-se um comportamento em forma de escada ou rampa, onde cada ano começa com um valor pequeno e sobe mês a mês até dezembro. Quanto mais íngreme a rampa, mais intensa foi a inflação naquele ano. Nota-se que os anos de 2002, 2015 e 2021 apresentam uma inflação elevada, enquanto os anos de 2006 e 2017 apresentam uma inflação mais estável.
+## Distribuição da variação mensal da inflação
 
-A partir da análise, percebe-se que a variação do IPCA e do IPCA15 apresentaram comportamentos semelhantes ao longo dos anos, o que é esperado, visto que ambos os índices são calculados pelo IBGE com a mesma metodologia. Isso destaca a confiabilidade do IPCA15 em prever o IPCA. Já o IPC-FIPE é um indicador que reflete exclusivamente o município de São Paulo e mostrou variações mais específicas e desvios em relação aos outros dois índices, o que é explicado pela sua metodologia distinta e foco regional.
+  Esta análise tem como objetivo compreender a variabilidade mensal do IPCA e sua evolução anual durante o perído de 2002 a 2022. Foram utilizadas as variáveis *mês* e *ano* — ambas quantitativas discretas — e *ipca_variacao*, uma variável quantitativa contínua, cujas medidas de estatística descritiva serviram de base para a construção dos gráficos e para o desenvolvimento do estudo.
+
+::: {#quad-ipca-2 layout-align="center" quad-pos="H"}
+```{=latex}
+\begin{tabular} { | l |
+            S[table-format = 0.2]
+            |}
+    \hline
+        \textbf{Estatística} & \textbf{Valor} \\
+        \hline
+        Média & 0,51 \\
+        Desvio Padrão & 0,41 \\
+        Variância & 0,16 \\
+        Mínimo & -0,68 \\
+        1º Quartil & 0,26 \\
+        Mediana & 0,46 \\
+        3º Quartil & 0,7 \\
+        Máximo & 3,02 \\
+    \hline
+    \end{tabular}
+```
+Medidas de resumo do IPCA
+:::
+
+```{r}
+#| label: fig-boxplot-ipca
+#| fig-cap: "Distribuição da Variação Mensal do IPCA (2002–2022)"
+
+grafic5
+
+```
+
+
+```{r}
+#| label: fig-ipca
+#| fig-cap: "Média da Inflação Mensal (IPCA) por Ano (2002–2022)"
+
+grafic6
+
+```
+  
+  O IPCA — Índice Nacional de Preços ao Consumidor Amplo — é o principal indicador da inflação no Brasil. Observando o [**Quadro** @quad-ipca-2], nota-se que a variação mensal do IPCA apresenta uma média de aproximadamente 0,51%, sugerindo um aumento de meio por cento ao mês nos preços. Já os valores das medidas de dispersão indicam uma variabilidade considerável entre os meses. Os valores mínimo e máximo, de respectivamente -0,68 e 3,02, apontam para variações significativas de deflação e inflação.
+
+  Com o intuito de investigar o comportamento mensal da variação do IPCA, foram construídos boxplots — representações gráficas nas quais se pode perceber de forma mais clara como uma variável quantitativa está distribuída. A partir de sua visualização, é possível perceber a sazonalidade e a variabilidade do índice dentro de cada mês ao longo do período de 2002 a 2022, como, por exemplo, o comportamento de janeiro ao longo desses anos.
+
+  Ao analisar o gráfico com vários boxplots, indicado pela $\ref{fig-boxplot-ipca}$, constata-se a presença da mediana — indicada pela linha dentro de cada caixa — e da média — representada por cada losango branco. Tais medidas apontam para uma tendência central da inflação. Enquanto dezembro, janeiro, fevereiro, março e abril apresentam valores mais elevados de média e mediana, os meses de junho, julho e agosto apresentam valores mais baixos.
+  
+  As alturas das caixas representam o intervalo interquartil, indicando 50% dos valores centrais. Caixas mais altas indicam maior variabilidade interna, enquanto as mais baixas sugerem uma maior estabilidade do IPCA. Já os pontos pretos são os outliers — observações que se encontram fora do padrão global de um conjunto de dados —; os mais altos indicam uma variação do IPCA significativamente acima do padrão, enquanto os mais baixos apontam para uma possível deflação.
+  
+  Além dos boxplots, foi construído um gráfico de linhas a partir da média anual da variável ipca_variacao. Ao observar a $\ref{fig-ipca}$, percebe-se a presença de picos da média mensal nos anos de 2002, 2015 e 2021. Já quedas acentuadas ocorrem em 2006 e 2017, além de oscilações moderadas entre 2007 e 2013.
+  
+  A análise permitiu identificar padrões tanto na dimensão sazonal (mensal) quanto na evolução anual do IPCA no período de 2002 a 2022. Os boxplots revelaram a tendência de cada mês a partir das médias, medianas, intervalos interquartis, bem como os outliers, que apontam para valores destoantes do padrão esperado. Além disso, o gráfico de linhas possibilitou observar o comportamento da média anual do IPCA ao longo do período estudado, evidenciando suas oscilações ao longo dos anos.

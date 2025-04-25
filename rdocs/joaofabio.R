@@ -24,10 +24,10 @@ source("rdocs/source/packages.R")
 # ---------------------------------------------------------------------------- #
 
 banco <- read.csv('inflacao.csv', sep = ',', dec = '.')
+dados1 <- subset(banco, ano >= 2002 & ano <= 2022)
 
 # Análise 1
 
-dados1 <- subset(banco, ano >= 2002 & ano <= 2022)
 #View(dados1)
 
 ## Modelo
@@ -71,8 +71,6 @@ dados2 <- banco %>%
 dados_filtrados <- dados2 %>%
   filter(referencia >= as.Date("2002-01-01") & referencia <= as.Date("2022-12-01"))
 
-#view(dados2)
-
 dados_long <- dados_filtrados %>%
   select(referencia, ipca_variacao, ipca15_variacao) %>%
   pivot_longer(cols = c(ipca_variacao, ipca15_variacao),
@@ -80,9 +78,15 @@ dados_long <- dados_filtrados %>%
                values_to = "variacao")
 
 
-dados_long$índice <- recode(dados_long$índice,
-                            "ipca_variacao" = "IPCA",
-                            "ipca15_variacao" = "IPCA-15")
+#view(dados2)
+
+dados_long_ano <- dados_long %>%
+  mutate(ano = year(referencia)) %>%
+  group_by(ano, índice) %>%
+  summarise(media_anual = mean(variacao, na.rm = TRUE), .groups = "drop")
+
+#view(dados_long_ano)
+
 
 dados_dezembro <- dados2 %>%
   filter(month(referencia) == 12 & year(referencia) >= 2002 & year(referencia) <= 2022) %>%
@@ -91,30 +95,22 @@ dados_dezembro <- dados2 %>%
 
 #view(dados_dezembro)
 
-
-## Modelo
-modelo2 <- lm(ipca_variacao ~ ipca15_variacao, dados1)
-summary(modelo2)
-
-## Coeficiente de correlação de Pearson
-r_2 <- cor(dados1$ipca15_variacao, dados1$ipca_variacao)
-
-## R²
-r2_2 <- summary(modelo2)$r.squared
-
 ## Gráficos
 
-grafic3 <- ggplot(dados_long) +
-  aes(x = referencia, y = variacao, group = índice, colour = índice) +
+grafic3 <- ggplot(dados_long_ano) +
+  aes(x = ano, y = media_anual, group = índice, colour = índice) +
   geom_line(size = 1) +
   geom_point(size = 2) +
   scale_colour_manual(name = "Índice", values = c("IPCA" = "#A11D21", "IPCA-15" = "#003366")) +
-  labs(x = "Ano",
-       y = "Variação (%)") +
+  labs(
+    x = "Ano",
+    y = "Variação das Médias (%)"
+  ) +
   theme_estat()
 
-grafic4 <- ggplot(dados_filtrados) +
-  aes(x = referencia, y = ipc_fipe_acumulado_ano, group = 1) +
+
+grafic4 <- ggplot(dados_dezembro) +
+  aes(x = ano, y = ipc_fipe_acumulado_ano, group = 1) +
   geom_line(size = 1, colour = "#A11D21") +
   geom_point(colour = "#A11D21", size = 2) +
   labs(
@@ -123,21 +119,35 @@ grafic4 <- ggplot(dados_filtrados) +
   ) +
   theme_estat()
 
-grafic5 <- ggplot(dados1, aes(x = ipca15_variacao, y = ipca_variacao)) +
-  geom_jitter(colour = "#A11D21", size = 3, alpha = 0.3) +
-  labs(
-    x = "IPCA15",
-    y = "IPCA",
+# Análise 3
+
+dados1$mes <- factor(dados1$mes, 
+                                levels = 1:12, 
+                                labels = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", 
+                                           "Jul", "Ago", "Set", "Out", "Nov", "Dez"))
+
+media_anual <- dados1 %>%
+  group_by(ano) %>%
+  summarise(media_ipca = mean(ipca_variacao, na.rm = TRUE))
+
+grafic5 <- ggplot(dados1) +
+  aes(
+    x = mes,
+    y = ipca_variacao
   ) +
+  geom_boxplot(fill = c("#A11D21"), width = 0.5) +
+  guides(fill = FALSE) +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 23, size = 3, fill = "white"
+  ) +
+  labs(x = "Mês", y = "Variação Mensal do IPCA (%)") +
   theme_estat()
 
-grafic6 <- ggplot(dados1, aes(x = ipca15_variacao, y = ipca_variacao)) +
-  geom_jitter(colour = "#A11D21", size = 3, alpha = 0.3) +
-  geom_smooth(method = "lm", se = FALSE, color = "#003366", size = 1.2) +
-  labs(
-    x = "IPCA15",
-    y = "IPCA",
-  ) +
+grafic6 <- ggplot(media_anual) +
+  aes(x = ano, y = media_ipca, group = 1) +
+  geom_line(size = 1, colour = "#A11D21") +
+  geom_point(colour = "#A11D21", size = 2) +
+  labs(x = "Ano", y = "Média Mensal do IPCA (%)") +
   theme_estat()
 
 
