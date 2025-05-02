@@ -1,0 +1,217 @@
+---
+# Nome do arquivo PDF gerado na pasta resultado
+output-file: "Antonio - análise 1 e 2"
+---
+```{r setup}
+#| include: false
+#| message: false
+#| warning: false
+
+source("rdocs/antonio.R")
+```
+
+# Introdução
+
+O seguinte projeto tem por objetivo apresentar as análises estatísticas requisitadas pelo Diretor Financeiro da Phineas & Ferb Capital, Felipe Bretas, buscando compreender a relação da inflação com outras variáveis presentes dentro da economia, assim com a Taxa Selic, o Salario Mínimo e o INCC. Para a realização do projeto foi utilizado o banco de dados inflacao em formato csv, disponibilizado pelo próprio cliente. Para a produção do relatório foram abordadas apenas algumas variáveis presentes no banco de dados. Dessa forma, por meio dos dados e da plataforma de programção R Studio, versão 4.4.2, e o programa de realização de relátorios Quarto.
+
+# Referencial Teórico
+
+## Análise Descritiva Univariada
+
+### Frequência Relativa
+
+A frequência relativa é utilizada para a comparação entre classes de uma variável categórica com $c$ categorias, ou para comparar uma mesma categoria em diferentes estudos.
+
+A frequência relativa da categoria $j$ é dada por:
+
+$$
+f_j=\frac{n_j}{n}
+$$
+
+Com:
+
+-   $j = 1, \, ..., \, c$
+
+-   $n_j =$ número de observações da categoria $j$
+
+-   $n =$ número total de observações
+
+Geralmente, a frequência relativa é utilizada em porcentagem, dada por:
+
+$$100 \times f_j$$
+
+### Média
+
+A média é a soma das observações dividida pelo número total delas, dada pela fórmula:
+
+$$\bar{X}=\frac{\sum\limits_{i=1}^{n}X_i}{n}$$
+
+Com:
+
+-   $i = 1, \, 2, \, ..., \, n$
+
+-   $n =$ número total de observações
+
+### Mediana
+
+Sejam as $n$ observações de um conjunto de dados $X=X_{(1)},X_{(2)},\ldots, X_{(n)}$ de determinada variável ordenadas de forma crescente. A mediana do conjunto de dados $X$ é o valor que deixa metade das observações abaixo dela e metade dos dados acima.
+
+Com isso, pode-se calcular a mediana da seguinte forma:
+
+$$
+med(X) =
+    \begin{cases}
+         X_{\frac{n+1}{2}}, \textrm{para n ímpar} \\
+         \frac{X_{\frac{n}{2}}+X_{\frac{n}{2} + 1}}{2}, \textrm{para n par} \\
+    \end{cases}
+$$
+
+### Quartis
+
+Os quartis são separatrizes que dividem o conjunto de dados em quatro partes iguais. O primeiro quartil (ou inferior) delimita os 25% menores valores, o segundo representa a mediana, e o terceiro delimita os 25% maiores valores. Inicialmente deve-se calcular a posição do quartil:
+
+-   Posição do primeiro quartil $P_1$: $$P_1=\frac{n+1}{4}$$
+
+-   Posição da mediana (segundo quartil) $P_2$: $$P_2 = \frac{n+1}{2}$$
+
+-   Posição do terceiro quartil $P_3$: $$P_3=\frac{3 \times (n+1)}{4}$$
+
+Com $n$ sendo o tamanho da amostra. Dessa forma, $X_{\left( P_i \right)}$ é o valor do $i$-ésimo quartil, onde $X_{\left( j \right)}$ representa a $j$-ésima observação dos dados ordenados.
+
+Se o cálculo da posição resultar em uma fração, deve-se fazer a média entre o valor que está na posição do inteiro anterior e do seguinte ao da posição.
+
+### Variância
+
+A variância é uma medida que avalia o quanto os dados estão dispersos em relação à média, em uma escala ao quadrado da escala dos dados.
+
+#### Variância Populacional
+
+Para uma população, a variância é dada por:
+
+$$\sigma^2=\frac{\sum\limits_{i=1}^{N}\left(X_i - \mu\right)^2}{N}$$
+
+Com:
+
+-   $X_i =$ $i$-ésima observação da população
+
+-   $\mu =$ média populacional
+
+-   $N =$ tamanho da população
+
+### Desvio Padrão
+
+O desvio padrão é a raiz quadrada da variância. Ele avalia o quanto os dados estão dispersos em relação à média.
+
+#### Desvio Padrão Populacional
+
+Para uma população, o desvio padrão é dado por:
+
+$$\sigma=\sqrt{\frac{\sum\limits_{i=1}^{N}\left(X_i - \mu\right)^2}{N}}$$
+
+Com:
+
+-   $X_i =$ i-ésima observação da população
+
+-   $\mu =$ média populacional
+
+-   $N =$ tamanho da população
+
+### Boxplot
+
+O boxplot é uma representação gráfica na qual se pode perceber de forma mais clara como os dados estão distribuídos. A figura abaixo ilustra um exemplo de boxplot.
+
+![Exemplo de boxplot](images/box_uni.png){fig-align="center"}
+
+A porção inferior do retângulo diz respeito ao primeiro quartil, enquanto a superior indica o terceiro quartil. Já o traço no interior do retângulo representa a mediana do conjunto de dados, ou seja, o valor em que o conjunto de dados é dividido em dois subconjuntos de mesmo tamanho. A média é representada pelo losango branco e os pontos são *outliers*. Os *outliers* são valores discrepantes da série de dados, ou seja, valores que não demonstram a realidade de um conjunto de dados.
+
+### Gráfico de Dispersão
+
+O gráfico de dispersão é uma representação gráfica utilizada para ilustrar o comportamento conjunto de duas variáveis quantitativas. A figura abaixo ilustra um exemplo de gráfico de dispersão, onde cada ponto representa uma observação do banco de dados.
+
+![Exemplo de Gráfico de Dispersão](images/disp_uni.png){fig-align="center"}
+
+### Tipos de Variáveis
+
+#### Qualitativas
+
+As variáveis qualitativas são as variáveis não numéricas, que representam categorias ou características da população. Estas subdividem-se em:
+
+-   **Nominais**: quando não existe uma ordem entre as categorias da variável (exemplos: sexo, cor dos olhos, fumante ou não, etc)
+-   **Ordinais**: quando existe uma ordem entre as categorias da variável (exemplos: nível de escolaridade, mês, estágio de doença, etc)
+
+#### Quantitativas
+
+As variáveis quantitativas são as variáveis numéricas, que representam características numéricas da população, ou seja, quantidades. Estas subdividem-se em:
+
+-   **Discretas**: quando os possíveis valores são enumeráveis (exemplos: número de filhos, número de cigarros fumados, etc)
+-   **Contínuas**: quando os possíveis valores são resultado de medições (exemplos: massa, altura, tempo, etc)
+
+### Coeficiente de Correlação de Pearson
+
+O coeficiente de correlação de Pearson é uma medida que verifica o grau de relação linear entre duas variáveis quantitativas. Este coeficiente varia entre os valores -1 e 1. O valor zero significa que não há relação linear entre as variáveis. Quando o valor do coeficiente $r$ é negativo, diz-se existir uma relação de grandeza inversamente proporcional entre as variáveis. Analogamente, quando $r$ é positivo, diz-se que as duas variáveis são diretamente proporcionais.
+
+O coeficiente de correlação de Pearson é normalmente representado pela letra $r$ e a sua fórmula de cálculo é:
+
+$$
+r_{Pearson} = \frac{\displaystyle \sum_{i=1}^{n} \left [ \left(x_i-\bar{x}\right) \left(y_i-\bar{y}\right) \right]}{\sqrt{\displaystyle \sum_{i=1}^{n} x_i^2 - n\bar{x}^2}  \times \sqrt{\displaystyle \sum_{i=1}^{n} y_i^2 - n\bar{y}^2}}
+$$
+
+Onde:
+
+-   $x_i =$ i-ésimo valor da variável $X$
+-   $y_i =$ i-ésimo valor da variável $Y$
+-   $\bar{x} =$ média dos valores da variável $X$
+-   $\bar{y} =$ média dos valores da variável $Y$
+
+Vale ressaltar que o coeficiente de Pearson é paramétrico e, portanto, sensível quanto à normalidade (simetria) dos dados.
+
+# Análises
+
+## Relação entre Taxa Selic, Inflação Acumulada e Juros ao longo do tempo
+
+Na primeira análise, foi examinada a relação entre a variável quantitativa contínua Taxa Selic, que representa a taxa básica de juros, e as variáveis quantitativas contínuas Inflação Acumulada e Juros Reais, no período de 2002 a 2022. Para representar esses dados, foi utilizado um gráfico de linhas multivariado, gráfico esse que é utilizado para análises temporais.
+
+![Gráfico de linha do IPCA acumulado em doze meses, juros reais e Taxa Selic ao longo do tempo](analise_temporal.pdf){fig-align="center" width="158mm" height="93mm"}
+
+Ao observar o gráfico, é possivel notar que, no geral, quando a Taxa Selic sofria uma alteração, a Inflação Acumulada e os Juros sofriam uma alteração similiar. Pode-se perceber também que embora a Inflação e os Juros sofram alterações similiares a Taxa Selic, os juros tem mudanças mais semelhantes a da Taxa Selic.
+
+## Estudo da correlação entre Inflação Acumulada e a Taxa Selic
+
+O presente estudo tem como objeto de análise a relação entre as variáveis quantitativas contínuas: inflação acumulada, representada pelo IPCA acumulado em doze meses, e a taxa Selic. O objetivo desta investigação é compreender o impacto da inflação sobre a taxa Selic, que constitui a taxa básica de juros da economia. Para isso, foram utilizados o gráfico de dispersão bivariado e o Coeficiente de Correlação de Pearson, proporcionando uma melhor compreensão das interações entre as variáveis analisadas.
+
+![Gráfico de dispersão de Inflação Acumulada pela Taxa Selic](Rplot.pdf){fig-align="center" width="158mm" height="93mm"}
+
+Pode ser observado no gráfico que existe uma correlação entre as variáveis, o que pode ser comprovado pelo Coeficiente de Correlação de Pearson que assume o valor aproximado de 0.635, significando uma relação média a forte entre as váriaveis Inflação Acumulada e a Taxa Selic. Como a taxa Selic representa a taxa básica de juros, pode ser esperado que a inflação seja afetada de forma posítiva, resultando no seu aumento.
+
+## Variação de salario mínimo por mandato presidencial
+
+Nesta análise, será observada a evolução da variável quantitativa contínua 'salário mínimo' durante o mandato de cada presidente. A variável qualitativa nominal corresponde aos diferentes presidentes no período de 2002 a 2022, incluindo: o final do mandato de Fernando Henrique Cardoso em 2002, os dois mandatos de Luiz Inácio Lula da Silva, abreviado como 'Lula', seguido pelo número do mandato, Dilma Rousseff, Michel Temer e Jair Bolsonaro. As eleições ocorrem a cada quatro anos, sendo o ano eleitoral considerado como o último ano de cada mandato. Isso fez com que as informações referentes a 2002 fossem menos precisas. Para realizar essa análise, foi utilizado um gráfico de boxplot.
+
+```{r}
+#| label: fig-graf1
+#| fig-cap: "Gráfico boxplot do Salario mínimo por mandato"
+
+analise3_graf
+
+```
+
+```{=latex}
+
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+**Medidas Resumo** & **F.H.C.** & **Lula** & **Dilma** & **Temer** & **Bolsonaro** \\ \hline
+Média              & 195        & 357.5    & 642.04   & 889.75    & 1088.625      \\ \hline
+Desvio Padrão      & 9.04      & 94.76   & 67.782    & 65.510    & 80.709        \\ \hline
+Variância          & 81,90     & 8980,40 & 4594.39  & 4291.56  & 6513.94      \\ \hline
+1° Quartil         & 195        & 260      & 602.75    & 857       & 1028.75       \\ \hline
+Mínimo             & 180        & 200      & 540       & 788       & 998           \\ \hline
+Mediana            & 200        & 350      & 650       & 908.5     & 1072.5        \\ \hline
+Máximo             & 200        & 510      & 724       & 954       & 1212          \\ \hline
+3° Quartil         & 200        & 415      & 689.5     & 941.25    & 1128          \\ \hline
+\end{tabular}
+```
+
+
+Como pode ser percebido pelo undefined, o salario mínimo aumentou com o tempo, uma das justificativas para isso pode ser a desvalorização da moeda, informação que não está presente nessa análise, portanto com um estudo mais aprofundado, pode ser possível indicar a razão desse aumento.
+
+## Conclusão
