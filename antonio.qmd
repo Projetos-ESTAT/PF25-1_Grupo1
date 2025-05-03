@@ -215,15 +215,15 @@ analise3_box
 
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
-Medidas Resumo & FHC    & Lula1   & Lula2   & Dilma1   & Dilma2/Temer & Bolsonaro \\ \hline
-Média          & 195    & 276.88  & 438.12  & 642.041  & 889.75       & 1088.625  \\ \hline
-Desvio Padrão  & 9.045  & 44.44   & 53.85   & 67.782   & 65.510       & 80.709    \\ \hline
-Variância      & 81,902 & 1974.91 & 2899,82 & 4594.399 & 4291.560     & 6513.942  \\ \hline
-1° Quartil     & 195    & 240     & 380     & 602.75   & 857          & 1028.75   \\ \hline
-Mínimo         & 180    & 200     & 350     & 540      & 788          & 998       \\ \hline
-Mediana        & 200    & 260     & 415     & 650      & 908.5        & 1072.5    \\ \hline
-Máximo         & 200    & 350     & 510     & 724      & 954          & 1212      \\ \hline
-3° Quartil     & 200    & 300     & 476.25  & 689.5    & 941.25       & 1128      \\ \hline
+\textbf{Medidas Resumo} & \textbf{FHC} & \textbf{Lula1} & \textbf{Lula2} & \textbf{Dilma1} & \textbf{Dilma2/Temer} & \textbf{Bolsonaro} \\ \hline
+Média                   & 195          & 276.88         & 438.12         & 642.041         & 889.75                & 1088.625           \\
+Desvio Padrão           & 9.045        & 44.44          & 53.85          & 67.782          & 65.510                & 80.709             \\
+Variância               & 81,902       & 1974.91        & 2899,82        & 4594.399        & 4291.560              & 6513.942           \\
+1° Quartil              & 195          & 240            & 380            & 602.75          & 857                   & 1028.75            \\
+Mínimo                  & 180          & 200            & 350            & 540             & 788                   & 998                \\
+Mediana                 & 200          & 260            & 415            & 650             & 908.5                 & 1072.5             \\
+Máximo                  & 200          & 350            & 510            & 724             & 954                   & 1212               \\
+3° Quartil              & 200          & 300            & 476.25         & 689.5           & 941.25                & 1128               \\ \hline
 \end{tabular}
 ```
 Quadro de medidas resumo do salário mínimo por mandato presidencial
