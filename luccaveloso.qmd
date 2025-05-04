@@ -1,0 +1,265 @@
+---
+# Nome do arquivo PDF gerado na pasta resultado
+output-file: "Lucca Veloso - análises 1 a 3"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,       # mostrar código (pode ser FALSE se quiser ocultar)
+  warning = FALSE,   # oculta mensagens de warning
+  message = FALSE    # oculta mensagens como carregamento de pacotes
+)
+source("rdocs/luccaveloso.R")
+```
+
+```{r}
+# Rodar apenas uma vez na vida!
+## Instalando o tinytex(pacote apenas)
+### CRAN version
+#install.packages('tinytex')
+
+## Baixando o tinytex
+#library(tinytex)
+#tinytex::install_tinytex()
+```
+
+# Introdução
+
+O objetivo deste relatório é identificar os principais fatores que influenciam a inflação nos anos enre 2002 e 2022 e oferecer subsídios para a formulação de políticas econômicas mais assertivas, por meio de  análises que utilizam métodos estatísticos para obter gráficos e valores.
+
+Onde as variáveis de interesse a serem utilizadas no estudo são IPCA acumulado por ano, IPCA acumulado por doze meses, salário mínimo, meta Selic e INCC; que são variáveis quantiaivas conínuas.
+
+# Referencial Teórico 
+
+Este projeto é baseado em um conjunto de dados sobre o índice de inflação e diversas variáveis econômicas no Brasil.
+
+# Análises
+
+## Análise 1
+
+
+Para esse estudo será observado o impacto da inflação acumulada ao ano(IPCA) no salário mínimo entre 2002 e 2022, que são variáveis quantitativas contínuas, e veremos se eles se relacionam.
+
+Primeiro, é utilizado um gráfico de dispersão conjunta para observar o comportamento individual do salário mínimo e da inflação para observar se os resíduos do gráfico seguirão algum padrão.
+
+```{r}
+#| label: fig-1
+#| fig-cap: "Gráfico de dispersão Salário mínimo x IPCA acumulado"
+
+graf_disp1
+```
+
+Observa-se no gráfico, que os resíduos de salário mínimo e IPCA parecem não seguir um padrão, o que significaria independência entre as variáveis. A fim de confirmar essa hipótese, é construído um gráfico de linhas utilizando a transformação logaritimica no salário mínimo(aproximando os valores com o IPCA) para observar o comportamento das variáveis ao longo do tempo: 
+
+```{r}
+#| label: fig-2
+#| fig-cap: "Salário mínimo e IPCA ao longo do tempo "
+
+graf_lin1
+```
+
+No gráfico, é possível ver que o salário mínimo não possuí grandes variações, enquanto o IPCA varia bastante. O que, deve significar que o comportamento de uma não afeta a outra.
+
+
+Para comprovar as conclusões iniciais a respeito das interação, observaremos os coeficientes dos testes de correlação de Pearson e Spearman para a hipótese nula de não correlação entre as variáveis e 95\% de confiança. Os coeficientes são valores entre -1 e 1, onde um valor próximo de 0 significa não correlação, um valor próximo de -1 significa forte correlação inversamente proporcional e um valor próximo de 1 significa forte correlação diretamente proporcional. A diferença entre os testes é que enquanto o de Pearson assume que variáveis têm uma distribuição normal e que a relação é linear, Spearman avalia a relação monotônica sem assumir normalidade.
+
+Os coeficientes obtidos nos testes foram:
+
+```{=latex}
+\begin{table}[ht]
+    \centering
+    \caption{Testes de hipóteses prara correlação}
+    
+    \begin{tabular}{cc}
+  \hline
+        Testes & Coeficiente obtido \\
+  \hline
+        Pearson & -0,1072948  \\
+        Spearman & -0,1067281 \\
+  \hline
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
+```
+
+Ambos os coeficientes obtidos estão próximos de -0.1, o que significa que a correlação entre eles é muito fraca e portanto não se pode dizer que há uma correlação linear.
+
+Após as análises, tanto os gráficos, quanto os teste levam a concluir que as variáveis salário mínimo e inflação não estão relacionadas. O que significa que o aumento da inflação não impacta em mudanças salário mínimo.
+
+Este resultado indica que o aumento da inflação resulta na perda de poder de compra do consumidor, já que seu salário não deverá sofrer alterações e a moeda perdera valor. E portanto, o salário mínimo não deve ser usado para explicar a inflação.
+
+## Análise 2
+
+
+O objetivo desse estudo é explorar relações heterogêneas entre taxa de juros e o imposto. para isso serão utilizados dados do IPCA (Índice Nacional de Preços ao Consumidor Amplo) e da taxa Selic (taxa básica de juros da economia). Que são variáveis quantitativas contínuas.
+
+
+Para iniciar a análise das variáveis, pode-se analisar um gráfico de dispersão conjunta usando as transformações logarítimicas das variáveis, por causa da diferença entre os valores de ambas. Então, observar-se a aleátoriedade dos resíduosnno gráfico para concluir se são relacionadas.
+
+```{r}
+#| label: fig-4
+#| fig-cap: "Gráfico de dispersão IPCA acmlado x taxa Selic"
+
+graf_disp2
+```
+
+Os resíduos no gráfico parecem estar  seguindo um padrão, onde o valor do IPCA acumulado cresce junto com a taxa Selic. O que leva a conclusão de que não seriam independentes e crescem .
+
+Para comprovar as conclusões iniciais a respeito das interação, são observados os coeficientes dos testes de correlação de Pearson e Spearman para a hipótese nula de não correlação entre as variáveis e 95\% de confiança, como foi feito na análise 1. 
+
+Os coeficientes obtidos nos testes foram:
+
+```{=latex}
+
+\begin{table}[ht]
+    \centering
+    \caption{Testes de hipótese}
+    
+    \begin{tabular}{cc}
+  \hline
+        Testes & Coeficiente obtido \\
+  \hline
+        Pearson & 0,6353118  \\
+        Spearman & 0,5743377 \\
+  \hline
+    \end{tabular}
+    \label{tab:my_label}
+\end{table}
+```
+
+Os coeficientes encontrados foram próximos de 0,6 , o que significa que a meta Selic e o IPCA possuem uma correlação direta moderada. O aumento de uma variável deve influenciar a outra não na mesma proporção.
+
+Para colaborar com a análise, realiza-se um modelo de regressão utilizando o IPCA como variável resposta e a meta da taxa Selic como variável explicativa. As medidas resumo que encontramos são:
+
+```{=latex}
+\begin{table}[ht]
+\centering
+    \caption{Tabela ANOVA da regressão}
+
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimativa & Erro padrão & Valor t & P-Valor \\ 
+  \hline
+Intercepto & 2,12891 & 0,35705 & 5,963 & 0,00000000842 \\ 
+\\ 
+  meta Selic & 0,36145 & 0,02779 & 13,008 & 0,0000000000000002 \\ 
+ \\ 
+   \hline
+\end{tabular}
+\end{table}
+```
+
+```{=latex}
+\begin{table}[ht]
+\centering
+    \caption{Medidas resumo da regressão}
+
+\begin{tabular}{rrr}
+\hline
+R2 & R2 ajustado & p-valor \\ 
+\\ 
+\hline
+  0,4036 & 0,4012 & 0,00000000000000022 \\ 
+ \\ 
+   \hline
+\end{tabular}
+\end{table}
+```
+
+Os p-valores da tabela indicam que a meta Selic é significativa para o IPCA. Já na segunda, o p-valor baixo indica que o modelo é estatisticamente significativo e o R2 indica que 40% da variabilidade é explicada pelo modelo.
+
+Para verificar que este resultado é valido, o modelo deve ter normalidade, resíduos aleatórios e homoscedasticidade. Para testar a normalidade, faz-se um gráfico quantil-quantil com envelope para analisar os resíduos studentizados sob os quantis da normal e o teste de Jarque-Bera para 0,95 de confiança e é rejeitada a normalidade se os p-valores forem menores que 0,05. Para  correlação dos resíduos, realiza-se o teste de Durbin-Watson e um p-valor menor que 0,05 indicará autocorrelação nos resíduos. Com respeito à homoscedasticidade, analisa um gráficos de disperção do valor ajustado e da covariável pelo resíduo studentzado e o teste de Goldfeld-Quandt para 0,95 de confiança e um p-valor maior que 0,05 indicará homoscedasticidade.
+
+
+```{r}
+#| label: fig-6
+#| fig-cap: "Gráfico quantil-quantil "
+
+grafenv
+```
+
+```{r}
+#| label: fig-7
+#| fig-cap: "Gráfico de dispersão: Resíduos Studentizados vs Valores Ajustados"
+
+grafico_residuos
+```
+
+
+```{=latex}
+\begin{table}[ht]
+\centering
+    \caption{Testes das suposições}
+
+\begin{tabular}{rr}
+\hline
+Teste & P-valor  \\ 
+\hline
+Jarque-Bera & 0,000000246  \\ 
+Durbin-Watson &  0,00000000000000022  \\ 
+Goldfeld-Quandt & 0,1573 \\ 
+   \hline
+\end{tabular}
+\end{table}
+```
+
+Pelo gráfico quantil-quantil, é possível identificar um padrão, já que o esperado era que os resíduos estivessem completamente aleatório e o p-valor de Jarque-Bera confirma a rejeição da normalidade. O p-valor de Durbin-Watson indica autocorrelação nos resíduos e o gráfico de dispersão mostra que a quantidade de resíduos aumenta para os valores ajustados médios e o p-valor de Goldfeld-Quandt rejeita homoscedasticidade. Assim, tendo rejeitado os pressupostos, modelo não é significativo.
+
+Tanto os resultados obtidos pelos gráficos, quanto pelos coeficientes dão indícios de que os dados do IPCA e da taxa Selic são relacionados, apesar de o modelo de regressão proposto não ter sido significativo.
+
+Portanto, conclui-se que um movimento de aumento ou queda da taxa de juros, deve causar o mesmo movimento na inflação, mas sem a mesma proporção. Ou seja, o juros pode ser usado para explicar a inflação, mas não deve ser o principal fator.
+
+## Análise 3
+
+
+Este estudo tem como objetivo, analisar o INCC (Índice Nacional de Custo da Construção) entre os anos de 2002 e 2022 a fim de ver como se ela se comporta ao longo do tempo. O INCC é uma variável quantitaiva conínua.
+
+Para analisar este  comportamento, observa-se um gráfico de barras ao longo dos anos, boxplot por ano e algumas medidas resumo:
+
+```{r}
+#| label: fig-3
+#| fig-cap: "INCC ao longo do tempo "
+
+graf_lin3
+```
+
+```{r}
+#| label: fig-5
+#| fig-cap: "Boxplot do INCC por ano"
+
+boxplot
+```
+
+```{=latex}
+\begin{table}[ht]
+\centering
+    \caption{tabela para medidas resumo}
+
+\begin{tabular}{rr}
+\hline
+Medida & Valor  \\ 
+\hline
+Média & 0,6362698  \\ 
+Mediana & 0,455  \\ 
+Variância & 0,3220267  \\ 
+Desvio padrão & 0,5674739  \\ 
+Mínimo & -0,25  \\ 
+Máximo & 2,94  \\ 
+   \hline
+\end{tabular}
+\end{table}
+```
+
+Nesses gráficos é possível ver que o INCC varia muito entre os anos e também dentro de um mesmo ano. Os pontos que se destacam são os picos em 2002, 2003, 2004 e 2008, o baixo valor de 2009 e volta a subir em 2020 e 2021 provavelmente por conta da pandemia de COVID-19 os preços de construção aumentaram.
+
+Pelas medidas resumo, percebe-se que tanto os altos valores de variância e desvio padrão comparados com a média, quanto a diferença entre os valores extremos, indicam que o INCC varia muito entre os anos.
+
+# Conclusão
+
+Após terem sido analisados o impacto da inflação no salário mínimo, a relação entre taxa de juros e inflação anual e a  distribuição do INCC por ano, conclui-se que:
+
+O salário mínimo não pode ser usado para explicar o comportamento da inflação, ou seja o IPCA não tem impacto sobre o salário mínimo. Enquanto a taxa de juros tem uma correlação direta moderada com a inflação anual, e portanto pode ser usada para ajudar a explicar o comportamento da inflação.
+
+Sobre a distribuição do INCC por ano, foi encontrado que há muita variação entre os anos, que provavelmene devem ser causados or motivos externos que não foram estudados neste relatório, como foi teorizado à respeito da pandemia de 2020.
+
+
