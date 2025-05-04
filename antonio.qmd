@@ -2,6 +2,7 @@
 # Nome do arquivo PDF gerado na pasta resultado
 output-file: "Antonio - análise 1 e 2"
 ---
+
 ```{r setup}
 #| include: false
 #| message: false
@@ -12,16 +13,15 @@ source("rdocs/antonio.R")
 
 # Introdução
 
- O seguinte projeto tem por objetivo apresentar as análises estatísticas requisitadas pelo Diretor Financeiro da Phineas & Ferb Capital, Felipe Bretas, buscando compreender  os principais fatores que influenciam a inflação para a oferta de subsídios para a formulação de políticas econômicas mais assertivas, por meio de  análises  detalhadas  que  evidenciam tendências, variações  e  correlações  ao  longo dos anos de 2002 a 2022. 
- 
- Para cumprir esse objetivo, foi solicitado estudos sobre o impacto da taxa Selic na inflação e nos juros reais, a relação sobre a taxa Selic e a inflação, a distribuição do salario mínimo ao longo dos mandatos presidenciais, a relação entre a taxa Selic e os juros reais, a comparação de índices de inflação, a distribuição da variação mensal da inflação, o impacto da inflação no salário mínimo, a relação entre a taxa de juros e inflação anual e a distribuição do INCC (Índice Nacional de Custo da Contrução). Para a realização dessas análises, foi utilizado gráficos de dispersão, linhas e boxplot, além de coeficientes de correlação. Para a realização do projeto foi utilizado o banco de dados inflacao em formato csv, disponibilizado pelo próprio cliente. Para a produção do relatório foram abordadas apenas algumas variáveis presentes no banco de dados, essas sendo a Taxa Selic, a taxa básica de juros da economia brasileira, o IPCA acumulado, que indica a inflação no país, o salario minimo, que indica o menor salario que um individuo pode receber, o Indice Nacional de Custo de Construção (INCC), que indica a variação dos custos da construção civil no Brasil e o ano de cada informação. 
- 
- O software utilizado para análise estatística dos dados foi o R versão 4.4.2.. O R é um software de programação gratuito largamente usado na área de estatística e visualização de dados que permite não só o manuseio e análise de bancos de dados, como também a confecção de gráficos.
+O seguinte projeto tem por objetivo apresentar as análises estatísticas requisitadas pelo Diretor Financeiro da Phineas & Ferb Capital, Felipe Bretas, buscando compreender os principais fatores que influenciam a inflação para a oferta de subsídios para a formulação de políticas econômicas mais assertivas, por meio de análises detalhadas que evidenciam tendências, variações e correlações ao longo dos anos de 2002 a 2022.
+
+Para cumprir esse objetivo, foi solicitado estudos sobre o impacto da taxa Selic na inflação e nos juros reais, a relação sobre a taxa Selic e a inflação, a distribuição do salario mínimo ao longo dos mandatos presidenciais, a relação entre a taxa Selic e os juros reais, a comparação de índices de inflação, a distribuição da variação mensal da inflação, o impacto da inflação no salário mínimo, a relação entre a taxa de juros e inflação anual e a distribuição do INCC (Índice Nacional de Custo da Contrução). Para a realização dessas análises, foi utilizado gráficos de dispersão, linhas e boxplot, além de coeficientes de correlação. Para a realização do projeto foi utilizado o banco de dados inflacao em formato csv, disponibilizado pelo próprio cliente. Para a produção do relatório foram abordadas apenas algumas variáveis presentes no banco de dados, essas sendo a Taxa Selic, a taxa básica de juros da economia brasileira, o IPCA acumulado, que indica a inflação no país, o salario minimo, que indica o menor salario que um individuo pode receber, o Indice Nacional de Custo de Construção (INCC), que indica a variação dos custos da construção civil no Brasil e o ano de cada informação.
+
+O software utilizado para análise estatística dos dados foi o R versão 4.4.2.. O R é um software de programação gratuito largamente usado na área de estatística e visualização de dados que permite não só o manuseio e análise de bancos de dados, como também a confecção de gráficos.
+
 # Referencial Teórico
 
-## Análise Descritiva Univariada
-
-### Frequência Relativa
+## Frequência Relativa
 
 A frequência relativa é utilizada para a comparação entre classes de uma variável categórica com $c$ categorias, ou para comparar uma mesma categoria em diferentes estudos.
 
@@ -43,7 +43,7 @@ Geralmente, a frequência relativa é utilizada em porcentagem, dada por:
 
 $$100 \times f_j$$
 
-### Média
+## Média
 
 A média é a soma das observações dividida pelo número total delas, dada pela fórmula:
 
@@ -55,7 +55,7 @@ Com:
 
 -   $n =$ número total de observações
 
-### Mediana
+## Mediana
 
 Sejam as $n$ observações de um conjunto de dados $X=X_{(1)},X_{(2)},\ldots, X_{(n)}$ de determinada variável ordenadas de forma crescente. A mediana do conjunto de dados $X$ é o valor que deixa metade das observações abaixo dela e metade dos dados acima.
 
@@ -69,7 +69,7 @@ med(X) =
     \end{cases}
 $$
 
-### Quartis
+## Quartis
 
 Os quartis são separatrizes que dividem o conjunto de dados em quatro partes iguais. O primeiro quartil (ou inferior) delimita os 25% menores valores, o segundo representa a mediana, e o terceiro delimita os 25% maiores valores. Inicialmente deve-se calcular a posição do quartil:
 
@@ -83,11 +83,11 @@ Com $n$ sendo o tamanho da amostra. Dessa forma, $X_{\left( P_i \right)}$ é o v
 
 Se o cálculo da posição resultar em uma fração, deve-se fazer a média entre o valor que está na posição do inteiro anterior e do seguinte ao da posição.
 
-### Variância
+## Variância
 
 A variância é uma medida que avalia o quanto os dados estão dispersos em relação à média, em uma escala ao quadrado da escala dos dados.
 
-#### Variância Populacional
+### Variância Populacional
 
 Para uma população, a variância é dada por:
 
@@ -101,11 +101,11 @@ Com:
 
 -   $N =$ tamanho da população
 
-### Desvio Padrão
+## Desvio Padrão
 
 O desvio padrão é a raiz quadrada da variância. Ele avalia o quanto os dados estão dispersos em relação à média.
 
-#### Desvio Padrão Populacional
+### Desvio Padrão Populacional
 
 Para uma população, o desvio padrão é dado por:
 
@@ -119,7 +119,7 @@ Com:
 
 -   $N =$ tamanho da população
 
-### Boxplot
+## Boxplot
 
 O boxplot é uma representação gráfica na qual se pode perceber de forma mais clara como os dados estão distribuídos. A figura abaixo ilustra um exemplo de boxplot.
 
@@ -127,29 +127,29 @@ O boxplot é uma representação gráfica na qual se pode perceber de forma mais
 
 A porção inferior do retângulo diz respeito ao primeiro quartil, enquanto a superior indica o terceiro quartil. Já o traço no interior do retângulo representa a mediana do conjunto de dados, ou seja, o valor em que o conjunto de dados é dividido em dois subconjuntos de mesmo tamanho. A média é representada pelo losango branco e os pontos são *outliers*. Os *outliers* são valores discrepantes da série de dados, ou seja, valores que não demonstram a realidade de um conjunto de dados.
 
-### Gráfico de Dispersão
+## Gráfico de Dispersão
 
 O gráfico de dispersão é uma representação gráfica utilizada para ilustrar o comportamento conjunto de duas variáveis quantitativas. A figura abaixo ilustra um exemplo de gráfico de dispersão, onde cada ponto representa uma observação do banco de dados.
 
 ![Exemplo de Gráfico de Dispersão](images/disp_uni.png){fig-align="center"}
 
-### Tipos de Variáveis
+## Tipos de Variáveis
 
-#### Qualitativas
+### Qualitativas
 
 As variáveis qualitativas são as variáveis não numéricas, que representam categorias ou características da população. Estas subdividem-se em:
 
 -   **Nominais**: quando não existe uma ordem entre as categorias da variável (exemplos: sexo, cor dos olhos, fumante ou não, etc)
 -   **Ordinais**: quando existe uma ordem entre as categorias da variável (exemplos: nível de escolaridade, mês, estágio de doença, etc)
 
-#### Quantitativas
+### Quantitativas
 
 As variáveis quantitativas são as variáveis numéricas, que representam características numéricas da população, ou seja, quantidades. Estas subdividem-se em:
 
 -   **Discretas**: quando os possíveis valores são enumeráveis (exemplos: número de filhos, número de cigarros fumados, etc)
 -   **Contínuas**: quando os possíveis valores são resultado de medições (exemplos: massa, altura, tempo, etc)
 
-### Coeficiente de Correlação de Pearson
+## Coeficiente de Correlação de Pearson
 
 O coeficiente de correlação de Pearson é uma medida que verifica o grau de relação linear entre duas variáveis quantitativas. Este coeficiente varia entre os valores -1 e 1. O valor zero significa que não há relação linear entre as variáveis. Quando o valor do coeficiente $r$ é negativo, diz-se existir uma relação de grandeza inversamente proporcional entre as variáveis. Analogamente, quando $r$ é positivo, diz-se que as duas variáveis são diretamente proporcionais.
 
@@ -215,42 +215,41 @@ analise3_box
 
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
-Medidas Resumo & FHC    & Lula1   & Lula2   & Dilma1   & Dilma2/Temer & Bolsonaro \\ \hline
-Média          & 195    & 276.88  & 438.12  & 642.041  & 889.75       & 1088.625  \\ \hline
-Desvio Padrão  & 9.045  & 44.44   & 53.85   & 67.782   & 65.510       & 80.709    \\ \hline
-Variância      & 81,902 & 1974.91 & 2899,82 & 4594.399 & 4291.560     & 6513.942  \\ \hline
-1° Quartil     & 195    & 240     & 380     & 602.75   & 857          & 1028.75   \\ \hline
-Mínimo         & 180    & 200     & 350     & 540      & 788          & 998       \\ \hline
-Mediana        & 200    & 260     & 415     & 650      & 908.5        & 1072.5    \\ \hline
-Máximo         & 200    & 350     & 510     & 724      & 954          & 1212      \\ \hline
-3° Quartil     & 200    & 300     & 476.25  & 689.5    & 941.25       & 1128      \\ \hline
+\textbf{Medidas Resumo} & \textbf{FHC} & \textbf{Lula1} & \textbf{Lula2} & \textbf{Dilma1} & \textbf{Dilma2/Temer} & \textbf{Bolsonaro} \\ \hline
+Média                   & 195          & 276.88         & 438.12         & 642.041         & 889.75                & 1088.625           \\
+Desvio Padrão           & 9.045        & 44.44          & 53.85          & 67.782          & 65.510                & 80.709             \\
+Variância               & 81,902       & 1974.91        & 2899,82        & 4594.399        & 4291.560              & 6513.942           \\
+1° Quartil              & 195          & 240            & 380            & 602.75          & 857                   & 1028.75            \\
+Mínimo                  & 180          & 200            & 350            & 540             & 788                   & 998                \\
+Mediana                 & 200          & 260            & 415            & 650             & 908.5                 & 1072.5             \\
+Máximo                  & 200          & 350            & 510            & 724             & 954                   & 1212               \\
+3° Quartil              & 200          & 300            & 476.25         & 689.5           & 941.25                & 1128               \\ \hline
 \end{tabular}
 ```
+
 Quadro de medidas resumo do salário mínimo por mandato presidencial
 :::
 
+Como pode ser percebido pela $\ref{fig-graf3}$, assim como o $\ref{tbl-sal_min}$ o salario mínimo aumentou com o tempo. Pode ser notado isso olhando como as medianas na $\ref{fig-graf3}$, representadas pelo ponto branco, sobem a cada mandato, o que pode ser visto também na $\ref{tbl-sal_min}$. Pode ser notado também o aumento do desvio padrão, medida essa utilizada para entender a dispersão dos valores.
 
-Como pode ser percebido pela $\ref{fig-graf3}$, assim como o $\ref{tbl-sal_min}$ o salario mínimo aumentou com o tempo. Pode ser notado isso olhando como as medianas na $\ref{fig-graf3}$, representadas pelo ponto branco, sobem a cada mandato, o que pode ser visto também na $\ref{tbl-sal_min}$. Pode ser notado também o aumento do
-desvio padrão, medida essa utilizada para entender a dispersão dos valores.
+# Conclusão
 
-## Conclusão
+Após a realização de todas as análises, o objetivo da pesquisa, a compreensão dos fatores que ifluenciam a inflação, pôde ser bem explorado pelas análises.
 
- Após a realização de todas as análises, o objetivo da pesquisa, a compreensão dos fatores que ifluenciam a inflação, pôde ser bem explorado pelas análises.
- 
- A análise da relação entre TaxaSelic, Inflação Acumulada e Jurosa o longo do tempo revela que, de maneira geral, mudanças na Taxa Selic impactaram a Inflação Acumulada e os Juros de forma semelhante. Além disso, nos anos de 2005, 2006 e 2021, essas variáveis apresentaram padrões de comportamento alinhados, enquanto nos demais anos, a relação mais evidente ocorreu entre a inflação e a Taxa Selic.
- 
- O estudo da correlação entre Inflação Acumulada e a Taxa Selic indica uma correlação significativa entre a Inflação Acumulada e a Taxa Selic, evidenciada pelo Coeficiente de Correlação de Pearson, que tem um valor aproximado de 0,635. Esse coeficiente aponta para uma relação de média a forte entre as variáveis, sugerindo que alterações na taxa Selic influenciam diretamente a inflação, levando ao seu aumento.
- 
- A análise da variação de salario mínimo por mandato presidencial indica que o salário mínimo aumentou ao longo do tempo, com as medianas subindo a cada mandato, representando esse crescimento, assim como as médias.
- 
- A análise da relação entre SELIC e juros reais foi visto que embora a Taxa SELIC influencie bastante os juros reais, ela não o afeta completamente.
- 
- A comparação de índices de inflação apresentou inflações extremamente similiares, algo esperado entre as duas variáveis.
- 
- A análise de distribuição da variação mensal da inflação revelou padrões sazonais e anuais, com os boxplots destacando tendências mensais através de medidas estatísticas e outliers. Além disso, o gráfico de linhas mostrou a evolução da média anual do índice, evidenciando suas oscilações ao longo dos anos.
- 
- Na análise do impacto da inflação no salário mínimo foi visto pouca relação entre as duas variáveis, ja que uma apresenta alta variação enquanto a outra apresenta variação mínima.
- 
- A análise da relação entre taxa de juros e inflação anual pode-se perceber pouca relação entre as variáveis, o que demontra que os juros não indica completamente indícios de inflação.
- 
- Por último, na distribuição do INCC por ano foi possivel notar uma alta variação em grande parte dos anos, exceto durante o governo de Michel Temer, onde houve uma diminuição da variação.
+A análise da relação entre TaxaSelic, Inflação Acumulada e Jurosa o longo do tempo revela que, de maneira geral, mudanças na Taxa Selic impactaram a Inflação Acumulada e os Juros de forma semelhante. Além disso, nos anos de 2005, 2006 e 2021, essas variáveis apresentaram padrões de comportamento alinhados, enquanto nos demais anos, a relação mais evidente ocorreu entre a inflação e a Taxa Selic.
+
+O estudo da correlação entre Inflação Acumulada e a Taxa Selic indica uma correlação significativa entre a Inflação Acumulada e a Taxa Selic, evidenciada pelo Coeficiente de Correlação de Pearson, que tem um valor aproximado de 0,635. Esse coeficiente aponta para uma relação de média a forte entre as variáveis, sugerindo que alterações na taxa Selic influenciam diretamente a inflação, levando ao seu aumento.
+
+A análise da variação de salario mínimo por mandato presidencial indica que o salário mínimo aumentou ao longo do tempo, com as medianas subindo a cada mandato, representando esse crescimento, assim como as médias.
+
+A análise da relação entre SELIC e juros reais foi visto que embora a Taxa SELIC influencie bastante os juros reais, ela não o afeta completamente.
+
+A comparação de índices de inflação apresentou inflações extremamente similiares, algo esperado entre as duas variáveis.
+
+A análise de distribuição da variação mensal da inflação revelou padrões sazonais e anuais, com os boxplots destacando tendências mensais através de medidas estatísticas e outliers. Além disso, o gráfico de linhas mostrou a evolução da média anual do índice, evidenciando suas oscilações ao longo dos anos.
+
+Na análise do impacto da inflação no salário mínimo foi visto pouca relação entre as duas variáveis, ja que uma apresenta alta variação enquanto a outra apresenta variação mínima.
+
+A análise da relação entre taxa de juros e inflação anual pode-se perceber pouca relação entre as variáveis, o que demontra que os juros não indica completamente indícios de inflação.
+
+Por último, na distribuição do INCC por ano foi possivel notar uma alta variação em grande parte dos anos, exceto durante o governo de Michel Temer, onde houve uma diminuição da variação.
