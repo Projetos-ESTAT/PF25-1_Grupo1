@@ -27,11 +27,332 @@ source("rdocs/luccaveloso.R")
 
 O objetivo deste relatório é identificar os principais fatores que influenciam a inflação nos anos enre 2002 e 2022 e oferecer subsídios para a formulação de políticas econômicas mais assertivas, por meio de  análises que utilizam métodos estatísticos para obter gráficos e valores.
 
-Onde as variáveis de interesse a serem utilizadas no estudo são IPCA acumulado por ano, IPCA acumulado por doze meses, salário mínimo, meta Selic e INCC; que são variáveis quantiaivas conínuas.
+Este projeto é baseado em um conjunto de dados sobre o índice de inflação e diversas variáveis econômicas no Brasil. Onde as variáveis de interesse a serem utilizadas no estudo são IPCA acumulado por ano, IPCA acumulado por doze meses, salário mínimo, meta Selic e INCC; que são variáveis quantiaivas conínuas.
 
 # Referencial Teórico 
 
-Este projeto é baseado em um conjunto de dados sobre o índice de inflação e diversas variáveis econômicas no Brasil.
+## Média
+
+A média se constitui como a razão entre a soma do valor das observações e o número total delas, dada pela fórmula:
+```{=latex}
+
+$$\bar{X}=\frac{\sum\limits_{i=1}^{n}X_i}{n}$$
+```
+
+Com:
+
+```{=latex}
+\begin{itemize}
+\item $i = 1, \, 2, \, ..., \, n$
+\item $n = $ número total de observações
+\end{itemize}
+```
+
+## Mediana
+
+Sejam as $n$ observações de um conjunto de dados $X=X_{(1)},X_{(2)},\ldots, X_{(n)}$ de determinada variável ordenadas de forma crescente. A mediana do conjunto de dados X é a medida que divide o valor das observações ao meio, de modo que metade delas tenham valor menor que a mediana e a outra metade, maior.
+
+\noindent Com isso, pode-se calcular a mediana da seguinte forma:
+
+```{=latex}
+
+\[ med(X)=
+\Bigg \{
+\begin{array}{ll}
+X_{\frac{n+1}{2}}, \textrm{ para n ímpar};\\
+\frac{X_{\frac{n}{2}}+X_{\frac{n}{2}}+1}{2},\textrm{para n par.}
+\end{array}
+\]
+```
+
+## Variância
+
+A variância é uma medida que avalia o quanto que os dados estão dispersos em relação à média, em uma escala ao quadrado da escala dos dados que dificulta a interpretação dessa medida. 
+
+### Variância Populacional
+
+Para uma população, a variância é dada por:
+```{=latex}
+
+$$\sigma^2=\frac{\sum\limits_{i=1}^{N}\left(X_i - \mu\right)^2}{N}$$
+```
+
+Com:
+
+```{=latex}
+\begin{itemize}
+\item $X_i =$ $i$-ésima observação da população
+\item $\mu =$ média populacional
+\item $N =$ tamanho da população
+\end{itemize}
+```
+
+### Variância Amostral
+
+Para uma amostra, a variância é dada por:
+
+```{=latex}
+
+$$S^2=\frac{\sum\limits_{i=1}^{n}\left(X_i - \bar{X}\right)^2}{n-1}$$
+```
+
+
+Com:
+
+```{=latex}
+
+\begin{itemize}
+\item $X_i =$ i-ésima observação da amostra
+\item $\bar{X} =$ média amostral
+\item $n =$ tamanho da amostra
+\end{itemize}
+```
+
+## Desvio Padrão
+
+O desvio padrão é a raiz quadrada da variância, haja vista a ideia de retirar a escala ao quadrado da variância para que se tenha uma medida mais facilmente interpretável. Avalia o quanto os dados estão dispersos em relação à média.
+
+### Desvio Padrão Populacional
+
+Para uma população, o desvio padrão é dado por:
+$$\sigma=\sqrt{\frac{\sum\limits_{i=1}^{N}\left(X_i - \mu\right)^2}{N}}$$
+
+Com:
+```{=latex}
+
+\begin{itemize}
+\item $X_i =$ i-ésima observação da população
+\item $\mu =$ média populacional
+\item $N =$ tamanho da população
+\end{itemize}
+```
+
+### Desvio Padrão Amostral
+
+Para uma amostra, o desvio padrão é dado por:
+
+```{=latex}
+
+$$S=\sqrt{\frac{\sum\limits_{i=1}^{n}\left(X_i - \bar{X}\right)^2}{n-1}}$$
+```
+
+
+Com:
+```{=latex}
+
+\begin{itemize}
+\item $X_i =$ i-ésima observação da amostra
+\item $\bar{X} =$ média amostral
+\item $n =$ tamanho da amostra
+\end{itemize}
+```
+
+## Boxplot
+
+O boxplot é uma representação gráfica na qual se pode perceber de forma mais clara como uma variável quantitativa está distribuída. A figura abaixo ilustra um exemplo de boxplot.
+
+A parte inferior do retângulo corresponde ao primeiro quartil, enquanto a parte superior representa o terceiro quartil. O traço dentro do retângulo indica a mediana, que divide o conjunto de dados em duas partes de tamanhos iguais. A média é ilustrada por um losango branco, e os pontos representam os outliers. Outliers são valores discrepantes da série de dados, ou seja, valores que não refletem a realidade do conjunto.
+
+## Gráfico de Dispersão
+
+O gráfico de dispersão é uma representação gráfica utilizada para ilustrar o comportamento conjunto de duas variáveis quantitativas. A figura abaixo ilustra um exemplo de gráfico de dispersão, onde cada ponto representa uma observação do banco de dados.
+
+##  Tipos de Variáveis
+
+### Qualitativas
+
+As variáveis qualitativas são as variáveis não numéricas, que representam categorias ou características da população. Estas subdividem-se em:
+
+```{=latex}
+
+\begin{itemize}
+\item Nominais: quando não existe uma ordem entre as categorias da variável (exemplos: sexo, cor dos olhos, fumante ou não, etc)
+\item Ordinais: quando existe uma ordem entre as categorias da variável (exemplos: nível de escolaridade, mês, estágio de doença, etc)
+\end{itemize}
+```
+
+### Quantitativas
+
+As variáveis quantitativas são as variáveis numéricas, que representam características numéricas da população, ou seja, quantidades. Estas subdividem-se em:
+
+```{=latex}
+
+\begin{itemize}
+\item Discretas: quando os possíveis valores são enumeráveis (exemplos: número de filhos, número de cigarros fumados, etc)
+\item Contínuas: quando os possíveis valores são resultado de medições (exemplos: massa, altura, tempo, etc)
+\end{itemize}
+```
+
+## Coeficiente de Correlação de Pearson
+
+O coeficiente de correlação de Pearson é uma medida que verifica o grau de relação linear entre duas variáveis quantitativas. Este coeficiente varia entre os valores -1 e 1. O valor zero significa que não há relação linear entre as variáveis. Quando o valor do coeficiente $r$ é negativo, diz-se existir uma relação de grandeza inversamente proporcional entre as variáveis. Analogamente, quando $r$ é positivo, diz-se que as duas variáveis são diretamente proporcionais.
+
+O coeficiente de correlação de Pearson é normalmente representado pela letra $r$ e a sua fórmula de cálculo é: 
+
+```{=latex}
+
+$$r_{Pearson} = \frac{\displaystyle \sum_{i=1}^{n} \left [ \left(x_i-\bar{x}\right) \left(y_i-\bar{y}\right) \right]}{\sqrt{\displaystyle \sum_{i=1}^{n} x_i^2 - n\bar{x}^2}  \times \sqrt{\displaystyle \sum_{i=1}^{n} y_i^2 - n\bar{y}^2}}$$
+
+
+\noindent Onde: 
+\begin{itemize}
+\item $x_i=$ i-ésimo valor da variável $X$
+\item $y_i=$ i-ésimo valor da variável $Y$
+\item $\bar{x}=$ média dos valores da variável $X$
+\item $\bar{y}=$ média dos valores da variável $Y$
+\end{itemize}
+```
+
+Vale ressaltar que o coeficiente de Pearson é paramétrico e, portanto, sensível quanto à normalidade (simetria) dos dados.
+
+## Coeficiente de Correlação de Spearman
+
+O coeficiente de correlação de Spearman é uma medida não paramétrica que verifica através de postos de variáveis quantitativas ou qualitativas ordinais o grau de relação monótona entre duas variáveis. Este coeficiente varia entre os valores -1 e 1. O valor zero significa que não há relação monótona entre as variáveis. Quando  o valor do coeficiente $\rho$ é negativo, diz-se ter uma relação de grandeza inversamente proporcional entre as variáveis. Analogamente, quando $\rho$ é positivo, diz-se que as duas variáveis são diretamente proporcionais.
+O coeficiente é calculado da seguinte maneira:
+
+```{=latex}
+
+$$\rho_{Spearman} = \frac{ \displaystyle \sum_{i=1}^{n}  \left[\left(R(x_i)-\frac{n+1}{2}\right)\left(R(y_i)-\frac{n+1}{2}\right)\right]}
+{\sqrt{\displaystyle \sum_{i=1}^{n}  \left(R(x_i)^2\right)-n\left(\frac{n+1}{2}\right)^{2}}  \times \sqrt{\displaystyle \sum_{i=1}^{n}  \left(R(y_i)^2 \right) -n\left(\frac{n+1}{2}\right)^{2}}}$$
+
+\noindent No qual:
+\begin{itemize}
+\item $x_i=$ i-ésimo valor da variável $X$
+\item $y_i=$ i-ésimo valor da variável $Y$
+\item $R(x_i)=$ posto relativo a observação i de $X$
+\item $R(y_i)=$ posto relativo a observação i de $Y$
+\item $n=$ número total de observações na amostra
+\end{itemize}
+
+\noindent Observação: Ao ordenar de forma crescente a amostra de observações $x_1,x_2,...,x_n,$ $y_1,y_2,...,y_n$, diz-se que $R(x_1)=1$ se $x_1$ é o menor valor dentre as duas amostras, $R(x_3)=2$ se $x_3$ é o segundo menor valor dentre as duas amostras, $R(y_4)=3$ se $y_4$ é o terceiro menor valor dentre as duas amostras, e assim sucessivamente.
+```
+
+## Coeficiente de Determinação ($R^2$)
+
+```{=latex}
+
+O coeficiente $R^2$ de determinação utiliza a variância dentro de cada grupo como insumo para explicar a variância global dos dados. Uma forma de quantificar essa medida é utilizar a média das variâncias em cada categoria, dada por:
+
+$$ \overline{var(S)} = \frac{\displaystyle \sum_{i=1}^{k}n_i \times var_i(S)}{n}$$
+
+No qual:
+
+\begin{itemize}
+\item $n =$ tamanho total da amostra
+\item $var_i(S) =$ variância dentro da categoria i
+\item $n_i =$ tamanho da amostra i
+\end{itemize}
+ 
+Assim, o coeficiente de determinação é dado por:
+
+$$ R^2 = 1 - \frac{\overline{var(S)}}{var(S)} $$
+
+Com $ 0\leq R^2 \leq 1$. Além disso, 1 indica que a variável categórica explica 100\% da variação da variável quantitativa e 0 indica que a variável categórica não impacta na variância da variável quantitativa. 
+```
+
+## Nível de significância ($\alpha$)
+
+```{=latex}
+
+Nível de significância do teste é o nome dado à probabilidade de se rejeitar a hipótese nula quando essa é verdadeira; essa rejeição é chamada de \textit{erro do tipo I}. O valor de $\alpha$ é fixado antes da extração da amostra e, usualmente, assume 5\%, 1\% ou 0,1\%.
+
+Por exemplo, um nível de significância de $\alpha=0,05$ (5\%) significa que, se for tomada uma grande quantidade de amostras, em 5\% delas a hipótese nula será rejeitada quando não havia evidências para essa rejeição, isto é, a probabilidade de se tomar a decisão correta é de 95\%.
+```
+
+## P-valor
+
+```{=latex}
+
+P-valor, ou nível descritivo, é uma medida utilizada para sintetizar o resultado de um teste de hipóteses. Ele pode ser chamado também de \textit{probabilidade de significância} do teste e indica a probabilidade de se obter um resultado da estatística de teste mais extremo do que o observado na presente amostra, considerando que a hipótese nula é verdadeira. Dessa forma, rejeita-se $H_{0}$ para P-valor $< \alpha$, porque a chance de uma nova amostra possuir valores tão extremos quanto o encontrado é baixa, ou seja, há evidências para a rejeição da hipótese nula.
+```
+
+## Análise de Variância (ANOVA)
+
+```{=latex}
+
+A Análise de Variância, mais conhecida por ANOVA, consiste em um teste de hipótese, em que é testado se as médias dos tratamentos (ou grupos) são iguais. Os dados são descritos pelo seguinte modelo:
+
+$$y_{ij}= \mu + \alpha_i  + e_{ij},\ i=1,…,a\ e\ j=1,…,N$$
+
+Em que:
+\begin{itemize}
+    \item $i$ é o número de tratamentos
+    \item $j$ é o número de observações
+    \item $y_{ij}$ é a j-ésima observação do i-ésimo tratamento
+\end{itemize}
+
+No modelo, $\mu$  é a média geral dos dados e $\alpha_i$ é o efeito do tratamento $i$  na variável resposta. Já $e_{ij}$ é a variável aleatória correspondente ao erro. Supõe-se que tal variável tem distribuição de probabilidade Normal com média zero e variância $\sigma^2$. Mais precisamente, $e_{ij}\sim N(0,\sigma^2)$.
+
+A variabilidade total pode ser decomposta na variabilidade devida aos diferentes tratamentos somada à variabilidade dentro de cada tratamento:
+\begin{align*}
+Soma\ de\ Quadrados\ Total\ (SQTOT)\ &=\ Soma\ de\ Quadrados\ de\ Tratamento\ (SQTRAT) \\
+&+\ Soma\ de\ Quadrados\ de\ Residuos\ (SQRES)
+\end{align*}
+
+Sendo o estudo não balanceado, ou seja, quando os tratamentos possuem tamanhos de amostra distintos:
+
+$$SQTOT = \sum\limits_{i=1}^a \sum\limits_{j=1}^{n_i} y_{ij}^2 - \dfrac{y_{..}^2}{N}$$
+$$SQTRAT = \sum\limits_{i=1}^a  \dfrac{y_{i.}^2}{n_i} - \dfrac{y_{..}^2}{N}$$
+$$SQRES = \sum\limits_{i=1}^a \sum\limits_{j=1}^{n_i} y_{ij}^2 - \sum\limits_{i=1}^a \dfrac{y_{i.}^2}{n_i}$$
+
+Em que:
+\begin{itemize}
+    \item $n_i$ é o número de observações do i-ésimo tratamento
+    \item $N$ é o número total de observações
+    \item $y_{..} = \sum\limits_{i=1}^a \sum\limits_{j=1}^{n_i} y_{ij}$
+    \item $y_{i.} = \sum\limits_{j=1}^{n_i} y_{ij}$
+\end{itemize}
+
+As hipóteses do teste são:
+$$\begin{cases}
+H_0 : \mbox{As médias dos \textit{a} tratamentos são iguais}\\
+H_1 : \mbox{Existe pelo menos um par de médias diferente}
+\end{cases}$$\\
+
+A estatística do teste é composta pelo Quadrado Médio de Tratamento (QMTRAT) e Quadrado Médio de Resíduos (QMRES), sendo a definição de Quadrado Médio a divisão da Soma de Quadrados pelos seus graus de liberdade. Por conta da suposição de Normalidade dos erros no modelo, a estatística do teste, F, tem distribuição F de Snedecor com $(a - 1)$ e $(\sum_{i=1}^a n_i - a)$ graus de liberdade.
+
+$$F_{obs} = \dfrac{QMTRAT}{QMRES} = \dfrac{\dfrac{SQTRAT}{(a-1)}}{\dfrac{SQRES}{(\sum_{i=1}^a n_i - a)}}$$
+
+A hipótese nula é rejeitada caso o p-valor seja menor que o nível de significância pré-fixado. A tabela abaixo resume as informações anteriores:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|ccccc}
+\hline
+\begin{tabular}[c]{@{}c@{}}Fonte de \\ Variação\end{tabular} & \begin{tabular}[c]{@{}c@{}}Graus de \\ Liberdade\end{tabular} & \begin{tabular}[c]{@{}c@{}}Soma de \\ Quadrados\end{tabular} & \begin{tabular}[c]{@{}c@{}}Quadrado\\  Médio\end{tabular} & Estatística F & P-valor \\ \hline
+Tratamento                                                   & $(a-1)$                                                             & SQTRAT                                                       & $\frac{SQTRAT}{(a-1)}$                                                         & $\frac{QMTRAT}{QMRES}$             & $P(F>F_{obs})$       \\
+Resíduos                                                     & $(\sum_{i=1}^a n_i - a)$                                                             & SQRES                                                        & $\frac{SQRES}{(\sum_{i=1}^a n_i - a)}$                                                         &               &         \\ \hline
+Total                                                        & $(\sum_{i=1}^a n_i - 1)$                                                             & SQTOT                                                        &                                                           &               &         \\ \hline
+\end{tabular}
+\end{table}
+```
+
+## Análise de Regressão Linear
+
+```{=latex}
+
+A análise de regressão é um instrumento eficaz para verificar a relação entre uma variável resposta quantitativa e uma ou mais variáveis explicativas, as quais podem ser tanto qualitativas quanto quantitativas. Essa análise é feita por meio do estudo de uma função de regressão entre as variáveis estudadas. A equação abaixo exemplifica como essa função pode ser escrita:
+$$Y=\alpha + \beta X + \varepsilon$$
+
+Esta equação mostra a regressão linear simples. Nela, é evidenciado o comportamento de uma variável dependente ou resposta $Y$ em função de uma variável $X$, chamada de variável independente ou explicativa. O termo $\beta$ indica o quanto espera-se que $Y$ varie se $X$ tiver um acréscimo de uma unidade e o coeficiente $\alpha$ mostra o valor esperado da variável $Y$ se $X$ fosse nulo. Além disso, o termo $\varepsilon$ indica o erro aleatório associado à equação em estudo. 
+
+Uma generalização do modelo de regressão simples é o modelo de regressão múltipla, no qual são consideradas mais de uma variável independente na equação. Dessa forma, a função será dada por:
+$$Y=\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \ldots + \beta_k X_k +\varepsilon$$
+
+Os coeficientes são interpretados de maneira semelhante: $\beta_0$ indica o valor esperado de $Y$ se todas as variáveis $X_i$ $(i=1, \, 2,\, \ldots , \, k)$ forem nulas; $\beta_i$ mostra a variação esperada de $Y$ para um aumento de uma unidade na variável $X_i$ quando todas as outras variáveis são mantidas constantes; e $\varepsilon$ informa o erro aleatório associado à equação em estudo.
+
+É necessário assumir as seguintes suposições para o modelo:
+    \begin{itemize}
+
+    \item Os erros seguem distribuição normal com média igual a zero
+    
+    \item A variância do erros é constante
+    
+    \item Os erros são independentes
+    
+    \end{itemize}
+```
+
 
 # Análises
 
