@@ -15,7 +15,7 @@ source("rdocs/antonio.R")
 
 O seguinte projeto tem por objetivo apresentar as análises estatísticas requisitadas pelo Diretor Financeiro da Phineas & Ferb Capital, Felipe Bretas, buscando compreender os principais fatores que influenciam a inflação para a oferta de subsídios para a formulação de políticas econômicas mais assertivas, por meio de análises detalhadas que evidenciam tendências, variações e correlações ao longo dos anos de 2002 a 2022.
 
-Para cumprir esse objetivo, foi solicitado estudos sobre o impacto da taxa Selic na inflação e nos juros reais, a relação sobre a taxa Selic e a inflação, a distribuição do salario mínimo ao longo dos mandatos presidenciais, a relação entre a taxa Selic e os juros reais, a comparação de índices de inflação, a distribuição da variação mensal da inflação, o impacto da inflação no salário mínimo, a relação entre a taxa de juros e inflação anual e a distribuição do INCC (Índice Nacional de Custo da Contrução). Para a realização dessas análises, foi utilizado gráficos de dispersão, linhas e boxplot, além de coeficientes de correlação. Para a realização do projeto foi utilizado o banco de dados inflacao em formato csv, disponibilizado pelo próprio cliente. Para a produção do relatório foram abordadas apenas algumas variáveis presentes no banco de dados, essas sendo a Taxa Selic, a taxa básica de juros da economia brasileira, o IPCA acumulado, que indica a inflação no país, o salario minimo, que indica o menor salario que um individuo pode receber, o Indice Nacional de Custo de Construção (INCC), que indica a variação dos custos da construção civil no Brasil e o ano de cada informação.
+Para cumprir esse objetivo, foi solicitado estudos sobre o impacto da Taxa Selic na inflação e nos juros reais, a relação sobre a Taxa Selic e a inflação, a distribuição do salario mínimo ao longo dos mandatos presidenciais, a relação entre a Taxa Selic e os juros reais, a comparação de índices de inflação, a distribuição da variação mensal da inflação, o impacto da inflação no salário mínimo, a relação entre a taxa de juros e inflação anual e a distribuição do INCC (Índice Nacional de Custo da Contrução). Para a realização dessas análises, foi utilizado gráficos de dispersão, linhas e boxplot, além de coeficientes de correlação. Para a realização do projeto foi utilizado o banco de dados inflacao em formato csv, disponibilizado pelo próprio cliente. Para a produção do relatório foram abordadas apenas algumas variáveis presentes no banco de dados, essas sendo a Taxa Selic, a taxa básica de juros da economia brasileira, o IPCA acumulado, que indica a inflação no país, o salario minimo, que indica o menor salario que um individuo pode receber, o Indice Nacional de Custo de Construção (INCC), que indica a variação dos custos da construção civil no Brasil e o ano de cada informação.
 
 O software utilizado para análise estatística dos dados foi o R versão 4.4.2.. O R é um software de programação gratuito largamente usado na área de estatística e visualização de dados que permite não só o manuseio e análise de bancos de dados, como também a confecção de gráficos.
 
@@ -182,11 +182,11 @@ analise1_graf
 
 ```
 
-Ao observar a $\ref{fig-graf1}$, é possivel notar que, no geral, quando a Taxa Selic sofria uma alteração, a Inflação Acumulada e os Juros sofriam uma alteração similiar. Pode-se perceber também que nos anos de 2005, 2006 e 2021, as váriaveis apresentaram comportamentos similiares, embora o comportamento nos demais anos tenha demonstrado uma relação entre a inflação e a taxa Selic.
+Ao observar a $\ref{fig-graf1}$, é possivel notar que, no geral, quando a Taxa Selic sofria uma alteração, a Inflação Acumulada e os Juros sofriam uma alteração similiar. Pode-se perceber também que nos anos de 2005, 2006 e 2021, as váriaveis apresentaram comportamentos similiares, embora o comportamento nos demais anos tenha demonstrado uma relação entre a inflação e a Taxa Selic.
 
 ## Estudo da correlação entre Inflação Acumulada e a Taxa Selic
 
-O presente estudo tem como objeto de análise a relação entre as variáveis quantitativas contínuas: inflação acumulada, representada pelo IPCA acumulado em doze meses, e a taxa Selic. O objetivo desta investigação é compreender o impacto da inflação sobre a taxa Selic, que constitui a taxa básica de juros da economia. Para isso, foram utilizados o gráfico de dispersão bivariado e o Coeficiente de Correlação de Pearson, proporcionando uma melhor compreensão das interações entre as variáveis analisadas.
+O presente estudo tem como objeto de análise a relação entre as variáveis quantitativas contínuas: inflação acumulada, representada pelo IPCA acumulado em doze meses, e a Taxa Selic. O objetivo desta investigação é compreender o impacto da inflação sobre a Taxa Selic, que constitui a taxa básica de juros da economia. Para isso, foram utilizados o gráfico de dispersão bivariado e o Coeficiente de Correlação de Pearson, proporcionando uma melhor compreensão das interações entre as variáveis analisadas.
 
 ```{r}
 #| label: fig-graf2
@@ -196,7 +196,7 @@ analise2_graf
 
 ```
 
-Pode ser observado na $\ref{fig-graf2}$ que existe uma correlação entre as variáveis, o que pode ser comprovado pelo Coeficiente de Correlação de Pearson, utilizado para indentificar a relação linear de variáveis quantitativas, que assume o valor aproximado de 0.635, significando uma relação média a forte entre as váriaveis Inflação Acumulada e a Taxa Selic. Como a taxa Selic representa a taxa básica de juros, pode ser esperado que a inflação seja afetada de forma direta, resultando no seu aumento.
+Pode ser observado na $\ref{fig-graf2}$ que existe uma correlação entre as variáveis, o que pode ser comprovado pelo Coeficiente de Correlação de Pearson, utilizado para indentificar a relação linear de variáveis quantitativas, que assume o valor aproximado de 0.635, significando uma relação média a forte entre as váriaveis Inflação Acumulada e a Taxa Selic. Como a Taxa Selic representa a taxa básica de juros, pode ser esperado que a inflação seja afetada de forma direta, resultando no seu aumento.
 
 ## Variação de salario mínimo por mandato presidencial
 
@@ -210,15 +210,15 @@ analise3_box
 
 ```
 
-::: {#tbl-sal_min layout-allign="center" tbl-pos="H"}
+::: {#quad-sal-min layout-allign="center" quad-pos="H"}
 ```{=latex}
 
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
 \textbf{Medidas Resumo} & \textbf{FHC} & \textbf{Lula1} & \textbf{Lula2} & \textbf{Dilma1} & \textbf{Dilma2/Temer} & \textbf{Bolsonaro} \\ \hline
-Média                   & 195          & 276.88         & 438.12         & 642.041         & 889.75                & 1088.625           \\
-Desvio Padrão           & 9.045        & 44.44          & 53.85          & 67.782          & 65.510                & 80.709             \\
-Variância               & 81,902       & 1974.91        & 2899,82        & 4594.399        & 4291.560              & 6513.942           \\
+Média                   & 195          & 276.88         & 438.12         & 642.04         & 889.75                & 1088.62           \\
+Desvio Padrão           & 9.04        & 44.44          & 53.85          & 67.78          & 65.51                & 80.70             \\
+Variância               & 81,90       & 1974.91        & 2899.82        & 4594.39        & 4291.56              & 6513.94           \\
 1° Quartil              & 195          & 240            & 380            & 602.75          & 857                   & 1028.75            \\
 Mínimo                  & 180          & 200            & 350            & 540             & 788                   & 998                \\
 Mediana                 & 200          & 260            & 415            & 650             & 908.5                 & 1072.5             \\
@@ -230,26 +230,12 @@ Máximo                  & 200          & 350            & 510            & 724 
 Quadro de medidas resumo do salário mínimo por mandato presidencial
 :::
 
-Como pode ser percebido pela $\ref{fig-graf3}$, assim como o $\ref{tbl-sal_min}$ o salario mínimo aumentou com o tempo. Pode ser notado isso olhando como as medianas na $\ref{fig-graf3}$, representadas pelo ponto branco, sobem a cada mandato, o que pode ser visto também na $\ref{tbl-sal_min}$. Pode ser notado também o aumento do desvio padrão, medida essa utilizada para entender a dispersão dos valores.
+Como pode ser percebido pela $\ref{fig-graf3}$, assim como o [**Quadro** @quad-sal-min] o salario mínimo aumentou com o tempo. Pode ser notado isso olhando como as medianas na $\ref{fig-graf3}$, representadas pelo ponto branco, sobem a cada mandato, o que pode ser visto também na [**Quadro** @quad-sal-min]. Pode ser notado também o aumento do desvio padrão, medida essa utilizada para entender a dispersão dos valores.
 
 # Conclusão
 
 Após a realização de todas as análises, o objetivo da pesquisa, a compreensão dos fatores que ifluenciam a inflação, pôde ser bem explorado pelas análises.
 
-A análise da relação entre TaxaSelic, Inflação Acumulada e Jurosa o longo do tempo revela que, de maneira geral, mudanças na Taxa Selic impactaram a Inflação Acumulada e os Juros de forma semelhante. Além disso, nos anos de 2005, 2006 e 2021, essas variáveis apresentaram padrões de comportamento alinhados, enquanto nos demais anos, a relação mais evidente ocorreu entre a inflação e a Taxa Selic.
+Como o objetivo principal de análise, foi observado o comportamento da inflação em junção com outros fatores ecônomicos. Entre as variáveis analisadas, pode-se perceber uma grande relação com a Taxa Selic, onde nas outras comparações não foi possível notar muitas informações, mas é importante ressaltar o flutuação dela ao longo dos anos, onde na análise temporal esse valor apresentou em 2022 um valor similiar ao de 2002.
 
-O estudo da correlação entre Inflação Acumulada e a Taxa Selic indica uma correlação significativa entre a Inflação Acumulada e a Taxa Selic, evidenciada pelo Coeficiente de Correlação de Pearson, que tem um valor aproximado de 0,635. Esse coeficiente aponta para uma relação de média a forte entre as variáveis, sugerindo que alterações na taxa Selic influenciam diretamente a inflação, levando ao seu aumento.
-
-A análise da variação de salario mínimo por mandato presidencial indica que o salário mínimo aumentou ao longo do tempo, com as medianas subindo a cada mandato, representando esse crescimento, assim como as médias.
-
-A análise da relação entre SELIC e juros reais foi visto que embora a Taxa SELIC influencie bastante os juros reais, ela não o afeta completamente.
-
-A comparação de índices de inflação apresentou inflações extremamente similiares, algo esperado entre as duas variáveis.
-
-A análise de distribuição da variação mensal da inflação revelou padrões sazonais e anuais, com os boxplots destacando tendências mensais através de medidas estatísticas e outliers. Além disso, o gráfico de linhas mostrou a evolução da média anual do índice, evidenciando suas oscilações ao longo dos anos.
-
-Na análise do impacto da inflação no salário mínimo foi visto pouca relação entre as duas variáveis, ja que uma apresenta alta variação enquanto a outra apresenta variação mínima.
-
-A análise da relação entre taxa de juros e inflação anual pode-se perceber pouca relação entre as variáveis, o que demontra que os juros não indica completamente indícios de inflação.
-
-Por último, na distribuição do INCC por ano foi possivel notar uma alta variação em grande parte dos anos, exceto durante o governo de Michel Temer, onde houve uma diminuição da variação.
+Para complementar o estudo também foi observado a variação do salário mínimo nos mandatos presidenciais e a distribuição do INCC (Índice Nacional de Custo de Construção) ao longo dos anos, onde houve muita variação do salário mínimo ao longo dos anos, começando com uma média de 195 reais e terminando com uma média de 1088.62 após vinte anos. É importante ressaltar que no governo de Michel Temer, esse que assumiu por grande parte do mandato, a variação do INCC variou menos, em contraste com os outros mandatos que apresentaram mais flutuações.
