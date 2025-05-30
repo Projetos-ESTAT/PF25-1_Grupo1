@@ -15,7 +15,7 @@ source("rdocs/antonio.R")
 
 O seguinte projeto tem por objetivo apresentar as análises estatísticas requisitadas pelo Diretor Financeiro da Phineas & Ferb Capital, Felipe Bretas, buscando compreender os principais fatores que influenciam a inflação para a oferta de subsídios para a formulação de políticas econômicas mais assertivas, por meio de análises detalhadas que evidenciam tendências, variações e correlações ao longo dos anos de 2002 a 2022.
 
-Para cumprir esse objetivo, foi solicitado estudos sobre o impacto da Taxa Selic na inflação e nos juros reais, a relação sobre a Taxa Selic e a inflação, a distribuição do salario mínimo ao longo dos mandatos presidenciais, a relação entre a Taxa Selic e os juros reais, a comparação de índices de inflação, a distribuição da variação mensal da inflação, o impacto da inflação no salário mínimo, a relação entre a taxa de juros e inflação anual e a distribuição do INCC (Índice Nacional de Custo da Contrução). Para a realização dessas análises, foi utilizado gráficos de dispersão, linhas e boxplot, além de coeficientes de correlação. Para a realização do projeto foi utilizado o banco de dados inflacao em formato csv, disponibilizado pelo próprio cliente. Para a produção do relatório foram abordadas apenas algumas variáveis presentes no banco de dados, essas sendo a Taxa Selic, a taxa básica de juros da economia brasileira, o IPCA acumulado, que indica a inflação no país, o salario minimo, que indica o menor salario que um individuo pode receber, o Indice Nacional de Custo de Construção (INCC), que indica a variação dos custos da construção civil no Brasil e o ano de cada informação.
+Para cumprir esse objetivo, foi solicitado estudos sobre o impacto da Taxa Selic na inflação e nos juros reais, a relação sobre a Taxa Selic e a inflação e a distribuição do salario mínimo ao longo dos mandatos presidenciais. Para a realização dessas análises, foi utilizado gráficos de dispersão, linhas e boxplot, além de coeficientes de correlação. Para a realização do projeto foi utilizado o banco de dados inflacao em formato csv, disponibilizado pelo próprio cliente. Para a produção do relatório foram abordadas apenas algumas variáveis presentes no banco de dados, essas sendo a Taxa Selic, a taxa básica de juros da economia brasileira, o IPCA acumulado, que indica a inflação no país, o salario minimo, que indica o menor salario que um individuo pode receber e o ano de cada informação.
 
 O software utilizado para análise estatística dos dados foi o R versão 4.4.2.. O R é um software de programação gratuito largamente usado na área de estatística e visualização de dados que permite não só o manuseio e análise de bancos de dados, como também a confecção de gráficos.
 
@@ -182,7 +182,7 @@ analise1_graf
 
 ```
 
-Ao observar a $\ref{fig-graf1}$, é possivel notar que, no geral, quando a Taxa Selic sofria uma alteração, a Inflação Acumulada e os Juros sofriam uma alteração similiar. Pode-se perceber também que nos anos de 2005, 2006 e 2021, as váriaveis apresentaram comportamentos similiares, embora o comportamento nos demais anos tenha demonstrado uma relação entre a inflação e a Taxa Selic.
+Ao observar a $\ref{fig-graf1}$, é possivel notar que, no geral, quando a Taxa Selic sofria uma alteração, a Inflação Acumulada e os Juros sofriam uma alteração similiar. Pode-se perceber também que nos anos de 2005, 2006 e 2021, as váriaveis apresentaram comportamentos similiares, embora o comportamento nos demais anos tenha demonstrado uma relação entre a inflação e a Taxa Selic. É interessante notar também que ao comparar os valores nos anos de 2002 e 2022, apenas a inflação apresenta um crescimento em comparação com seu valor de 20 anos anteriores, contrastando com a taxa Selic que apresentou a maior redução entre as três.
 
 ## Estudo da correlação entre Inflação Acumulada e a Taxa Selic
 
@@ -196,11 +196,11 @@ analise2_graf
 
 ```
 
-Pode ser observado na $\ref{fig-graf2}$ que existe uma correlação entre as variáveis, o que pode ser comprovado pelo Coeficiente de Correlação de Pearson, utilizado para indentificar a relação linear de variáveis quantitativas, que assume o valor aproximado de 0.635, significando uma relação média a forte entre as váriaveis Inflação Acumulada e a Taxa Selic. Como a Taxa Selic representa a taxa básica de juros, pode ser esperado que a inflação seja afetada de forma direta, resultando no seu aumento.
+Pode ser observado na $\ref{fig-graf2}$ que existe uma correlação entre as variáveis, o que pode ser comprovado pelo Coeficiente de Correlação de Pearson, utilizado para indentificar a relação linear de variáveis quantitativas, que assume o valor aproximado de 0.635, significando uma relação média a forte entre as váriaveis Inflação Acumulada e a Taxa Selic. Isso indica uma tendência da inflação sofrer alterações similiares a Taxa Selic.
 
 ## Variação de salario mínimo por mandato presidencial
 
-Nesta análise, será observada a evolução da variável quantitativa contínua 'salário mínimo' durante o mandato de cada presidente. A variável qualitativa nominal corresponde aos diferentes presidentes no período de 2002 a 2022, incluindo: o final do mandato de Fernando Henrique Cardoso em 2002, os dois mandatos de Luiz Inácio Lula da Silva, abreviado como 'Lula', seguido pelo número do mandato, Dilma Rousseff, Michel Temer e Jair Bolsonaro. As eleições ocorrem a cada quatro anos, sendo o ano eleitoral considerado como o último ano de cada mandato. Isso fez com que as informações referentes a 2002 fossem menos precisas. Para realizar essa análise, foi utilizado um gráfico de boxplot.
+Nesta análise, será observada a evolução da variável quantitativa contínua 'salário mínimo' durante o mandato de cada presidente. A variável qualitativa nominal corresponde aos diferentes presidentes no período de 2002 a 2022, incluindo: o final do mandato de Fernando Henrique Cardoso em 2002, abreviado para FHC; os dois mandatos de Luiz Inácio Lula da Silva e Dilma Rousseff, abreviados como 'Lula' e 'Dilma', respectivamente, seguidos pelo número do mandato; Michael Temer, abreviado como 'Temer', que assumiu a maior parte do mandato seguinte ao segundo de Dilma; e Jair Bolsonaro, apresentado como 'Bolsonaro' no gráfico. As eleições ocorrem a cada quatro anos, sendo o ano eleitoral considerado como o último ano de cada mandato. Isso fez com que as informações referentes a 2002 fossem menos precisas. Para realizar essa análise, foi utilizado um gráfico de boxplot.
 
 ```{r}
 #| label: fig-graf3
@@ -216,26 +216,32 @@ analise3_box
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
 \textbf{Medidas Resumo} & \textbf{FHC} & \textbf{Lula1} & \textbf{Lula2} & \textbf{Dilma1} & \textbf{Dilma2/Temer} & \textbf{Bolsonaro} \\ \hline
-Média                   & 195          & 276.88         & 438.12         & 642.04         & 889.75                & 1088.62           \\
-Desvio Padrão           & 9.04        & 44.44          & 53.85          & 67.78          & 65.51                & 80.70             \\
-Variância               & 81,90       & 1974.91        & 2899.82        & 4594.39        & 4291.56              & 6513.94           \\
-1° Quartil              & 195          & 240            & 380            & 602.75          & 857                   & 1028.75            \\
+Média                   & 195          & 276,88         & 438,12         & 642,04         & 889,75                & 1088,62           \\
+Desvio Padrão           & 9,04        & 44,44          & 53,85          & 67,78          & 65,51                & 80,70             \\
+Variância               & 81,90       & 1974,91        & 2899,82        & 4594,39        & 4291,56              & 6513,94           \\
+1° Quartil              & 195          & 240            & 380            & 602,75          & 857                   & 1028,75            \\
 Mínimo                  & 180          & 200            & 350            & 540             & 788                   & 998                \\
-Mediana                 & 200          & 260            & 415            & 650             & 908.5                 & 1072.5             \\
+Mediana                 & 200          & 260            & 415            & 650             & 908,5                 & 1072,5             \\
 Máximo                  & 200          & 350            & 510            & 724             & 954                   & 1212               \\
-3° Quartil              & 200          & 300            & 476.25         & 689.5           & 941.25                & 1128               \\ \hline
+3° Quartil              & 200          & 300            & 476,25         & 689,5           & 941,25                & 1128               \\ \hline
 \end{tabular}
 ```
 
 Quadro de medidas resumo do salário mínimo por mandato presidencial
 :::
 
-Como pode ser percebido pela $\ref{fig-graf3}$, assim como o [**Quadro** @quad-sal-min] o salario mínimo aumentou com o tempo. Pode ser notado isso olhando como as medianas na $\ref{fig-graf3}$, representadas pelo ponto branco, sobem a cada mandato, o que pode ser visto também na [**Quadro** @quad-sal-min]. Pode ser notado também o aumento do desvio padrão, medida essa utilizada para entender a dispersão dos valores.
+Como pode ser percebido pela $\ref{fig-graf3}$, assim como no [**Quadro** @quad-sal-min], o salário mínimo aumentou com o tempo. Isso pode ser notado observando como as medianas na $\ref{fig-graf3}$ sobem a cada mandato, o que também pode ser visto no [**Quadro** @quad-sal-min]. Nota-se também o aumento do desvio padrão, medida utilizada para entender a dispersão dos valores. 
+
+O mandato com a maior variação entre o menor e o maior salário foi o de Jair Bolsonaro, com 214 reais de diferença, enquanto o menor, com exceção do mandato de Fernando Henrique Cardoso que tem uma variação de apenas 20 reais por apresentar apenas um ano, foi o primeiro mandato de Lula, com 150 reais de diferença. Além disso, o maior aumento da média salarial entre mandatos ocorreu nas duas posses de Dilma, com um aumento de 203,92 reais, e o menor, novamente com a exceção do mandato de FHC com uma diferença de 81,88, foi entre os mandatos de Lula, de 161,24.
+
+Pode-se perceber então que não existem evidências de um aumento muito grande do salário dentro do mandato e de um para o outro, flutuando por volta de 150 e 200 reais em ambos os casos, em comparação entre os analisados.
 
 # Conclusão
 
 Após a realização de todas as análises, o objetivo da pesquisa, a compreensão dos fatores que ifluenciam a inflação, pôde ser bem explorado pelas análises.
 
-Como o objetivo principal de análise, foi observado o comportamento da inflação em junção com outros fatores ecônomicos. Entre as variáveis analisadas, pode-se perceber uma grande relação com a Taxa Selic, onde nas outras comparações não foi possível notar muitas informações, mas é importante ressaltar o flutuação dela ao longo dos anos, onde na análise temporal esse valor apresentou em 2022 um valor similiar ao de 2002.
+Primeiramente na análise da relação entre inflação, Taxa Selic e Juros Reais, foi possível perceber que por mais que eles influenciem um no outro, ainda existem mais fatores não estudados nessa análise que afetam essas variáveis.
 
-Para complementar o estudo também foi observado a variação do salário mínimo nos mandatos presidenciais e a distribuição do INCC (Índice Nacional de Custo de Construção) ao longo dos anos, onde houve muita variação do salário mínimo ao longo dos anos, começando com uma média de 195 reais e terminando com uma média de 1088.62 após vinte anos. É importante ressaltar que no governo de Michel Temer, esse que assumiu por grande parte do mandato, a variação do INCC variou menos, em contraste com os outros mandatos que apresentaram mais flutuações.
+Assim como na primeira análise apresentada, no estudo entre a relação da Taxa Selic e da inflação acumulada em 12 meses, embora haja uma relação média-forte entre as duas, ainda existem fatores não estudados que influenciam essas variáveis.
+
+Por fim, ao observar a variação do salário em cada mandato presidencial, pode se perceber que a alteração de salário em cada mandato, assim como de um mandato para outro não foi muito elevada ao fazer uma comparação entre eles.
